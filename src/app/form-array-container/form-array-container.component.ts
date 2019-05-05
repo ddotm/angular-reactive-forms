@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DataService} from '../services/data.service';
+import {DataItem} from '../models/data-item';
 
 @Component({
   selector: 'app-form-array-container',
@@ -8,7 +9,7 @@ import {DataService} from '../services/data.service';
 
 export class FormArrayContainerComponent implements OnInit {
 
-  public data: Array<any> = null;
+  public data: Array<DataItem> = null;
 
   constructor(private dataService: DataService) {
   }
@@ -18,6 +19,7 @@ export class FormArrayContainerComponent implements OnInit {
       .subscribe({
         next: (value) => {
           this.data = value;
+          console.log(JSON.stringify(this.data));
         }
       });
   }
