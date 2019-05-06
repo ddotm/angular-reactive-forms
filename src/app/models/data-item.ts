@@ -1,20 +1,18 @@
 import * as _ from 'lodash';
 import {ModelMetadata} from './model-metadata';
 
-export class DataItem {
-  public firstName: string = null;
-  public lastName: string = null;
-  public dob: Date = null;
+export class DataItem<T> {
+  public data: T = null;
 
   public metadata: ModelMetadata = new ModelMetadata();
 
-  public constructor(data?: any) {
+  public constructor(data?: T) {
     this.init(data);
   }
 
-  public init(data: any) {
+  public init(data: T) {
     if (data) {
-      _.merge(this, data);
+      _.merge(this.data, data);
     }
   }
 }

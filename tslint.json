@@ -73,6 +73,9 @@
     "directive-class-suffix": true,
     "semicolon": [true, "always"],
     "no-trailing-whitespace": true,
-    "indent": [true, "spaces", 2]
+    "indent": [true, "spaces", 2],
+    "no-unused-expression": true,
+    "no-var-keyword": true,
+    "no-shadowed-variable": true
   }
 }

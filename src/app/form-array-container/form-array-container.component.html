@@ -1,5 +1,9 @@
-<div *ngFor="let dataItem of data">
+<div *ngFor="let dataItem of viewModel">
   <div>
-    {{dataItem}}
+    {{dataItem.data.firstName}}
+    &nbsp;
+    {{dataItem.data.lastName}}
+    &nbsp;
+    {{dataItem.data.dob | date}}
   </div>
 </div>
