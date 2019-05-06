@@ -17,4 +17,8 @@ export class DataService {
     ];
     return of(people);
   }
+
+  public saveData(data: Array<Person>): void {
+
+  }
 }

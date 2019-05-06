@@ -1,4 +1,6 @@
 import * as _ from 'lodash';
+import {ModelMetadata} from './model-metadata';
+import {FieldProps} from './field-props';
 
 export class Person {
   public contactType: string = null;
@@ -10,9 +12,18 @@ export class Person {
     this.init(data);
   }
 
-  public init(data: any) {
+  public init(data?: any) {
     if (data) {
       _.merge(this, data);
     }
+  }
+
+  public setFormProps(metadata: ModelMetadata): void {
+    metadata.fieldProps = {
+      firstName: new FieldProps({
+        label: 'First Name (maybe)',
+        class: 'text-danger'
+      })
+    };
   }
 }

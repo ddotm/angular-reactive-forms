@@ -10,7 +10,7 @@ export class DataItem<T> {
     this.init(data);
   }
 
-  public init(data: T) {
+  public init<T>(data: T) {
     if (data) {
       _.merge(this.data, data);
     }

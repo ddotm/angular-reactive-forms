@@ -11,8 +11,8 @@
           <option [ngValue]="'V'">Venue</option>
         </select>
       </div>
-      <div class="form-group col-2">
-        <label for="firstName">First Name</label>
+      <div class="form-group col-2" [ngClass]="dataItem.metadata.fieldProps['firstName'].class">
+        <label for="firstName">{{dataItem.metadata.fieldProps['firstName'].label}}</label>
         <input type="text"
                class="form-control"
                id="firstName"
