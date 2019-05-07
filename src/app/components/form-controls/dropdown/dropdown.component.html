@@ -1,8 +1,8 @@
 <div class="form-group"
      [formGroup]="formGroup">
 
-  <label for="contactType">{{vm.label}}</label>
+  <label [for]="controlName">{{vm.label}}</label>
   <p-dropdown [options]="vm.dropdownOptions"
-              id="contactType"
-              formControlName="contactType"></p-dropdown>
+              [id]="controlName"
+              [formControlName]="controlName"></p-dropdown>
 </div>
