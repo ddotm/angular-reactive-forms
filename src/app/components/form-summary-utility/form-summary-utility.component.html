@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="card col-8">
+    <div class="card-body">
+      <h5 class="card-title">Form state</h5>
+      <h6>Form value</h6>
+      <div class="mb-2">
+        {{form.value | json }}
+      </div>
+      <h6>Form properties</h6>
+      <ul class="list-inline">
+        <li class="list-inline-item"><b>pristine:</b> {{form.pristine}}</li>
+        <li class="list-inline-item"><b>valid:</b> {{form.valid}}</li>
+        <li class="list-inline-item"><b>touched:</b> {{form.touched}}</li>
+        <li class="list-inline-item"><b>touched:</b> {{form.touched}}</li>
+        <li class="list-inline-item"><b>dirty:</b> {{form.dirty}}</li>
+        <li><b>errors:</b> {{form.errors | json}}</li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -6,12 +6,14 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {FormArrayContainerComponent} from './components/form-array-container/form-array-container.component';
 import {PersonComponent} from './components/person/person.component';
+import {FormSummaryUtilityComponent} from './components/form-summary-utility/form-summary-utility.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormArrayContainerComponent,
-    PersonComponent
+    PersonComponent,
+    FormSummaryUtilityComponent
   ],
   imports: [
     BrowserModule,
