@@ -10,6 +10,8 @@ import {PersonComponent} from './components/person/person.component';
 import {FormSummaryUtilityComponent} from './components/form-summary-utility/form-summary-utility.component';
 import {DropdownComponent} from './components/form-controls/dropdown/dropdown.component';
 
+import {DropdownModule} from 'primeng/dropdown';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +23,7 @@ import {DropdownComponent} from './components/form-controls/dropdown/dropdown.co
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    DropdownModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule
