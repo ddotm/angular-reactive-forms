@@ -13,7 +13,7 @@ export class DataItem<T> {
     this.init(data);
   }
 
-  public init<T>(data: T) {
+  private init<T>(data: T) {
     if (data) {
       _.merge(this.data, data);
     }

@@ -29,9 +29,10 @@ export class FormArrayContainerComponent implements OnInit, OnDestroy {
             const dataItem = new DataItem<Person>(this.formsService)
               .setData(new Person(person))
               .createForm();
-            dataItem.metadata.fieldProps = dataItem.data.getFormProps();
+            dataItem.metadata.fieldProps = dataItem.data.getFieldProps();
             // Execute any business logic
             if (dataItem.data.firstName === 'Bob') {
+              dataItem.metadata.displayDiagnostics = true;
               dataItem.metadata.fieldProps.firstName.label = 'Custom label for Bob';
             }
             this.vm.push(dataItem);

@@ -7,6 +7,7 @@ export class Person {
   public firstName: string = null;
   public lastName: string = null;
   public dob: Date = null;
+  public companyName: string = null;
 
   public constructor(data?: any) {
     this.init(data);
@@ -19,7 +20,7 @@ export class Person {
     return this;
   }
 
-  public getFormProps(): { [key: string]: FieldProps } {
+  public getFieldProps(): { [key: string]: FieldProps } {
     return {
       contactType: new FieldProps({
         label: 'Contact Type',
@@ -39,6 +40,10 @@ export class Person {
       }),
       dob: new FieldProps({
         label: 'Date of Birth',
+        class: ''
+      }),
+      companyName: new FieldProps({
+        label: 'Company Name',
         class: ''
       })
     };

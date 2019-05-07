@@ -2,7 +2,8 @@
      [formGroup]="formGroup"
      [ngClass]=vm.class>
 
-  <label [for]="controlName">
+  <label [for]="controlName"
+         class="d-block">
     {{vm.label}}
   </label>
   <p-dropdown [options]="vm.dropdownOptions"
