@@ -26,15 +26,13 @@ export class FormArrayContainerComponent implements OnInit, OnDestroy {
         next: (value: Array<Person>) => {
           _.forEach(value, (person: Person) => {
             // Assign specific type to the data property of the data item container
-            const dataItem = new DataItem<Person>();
-            dataItem.data = new Person(person);
-            // Create a form group for the data item
-            dataItem.metadata.form = this.formsService.createFormGroup(dataItem);
-            // Populate form properties for Person
-            dataItem.data.setFormProps(dataItem.metadata);
+            const dataItem = new DataItem<Person>(this.formsService)
+              .setData(new Person(person))
+              .createForm();
+            dataItem.metadata.fieldProps = dataItem.data.getFormProps();
             // Execute any business logic
             if (dataItem.data.firstName === 'Bob') {
-              dataItem.metadata.fieldProps.firstName.label = 'Some custom wording';
+              dataItem.metadata.fieldProps.firstName.label = 'Custom label for Bob';
             }
             this.viewModel.push(dataItem);
           });

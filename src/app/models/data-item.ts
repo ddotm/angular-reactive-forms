@@ -1,12 +1,15 @@
 import * as _ from 'lodash';
 import {ModelMetadata} from './model-metadata';
+import {FormsService} from '../services/forms.service';
 
 export class DataItem<T> {
   public data: T = null;
-
   public metadata: ModelMetadata = new ModelMetadata();
 
-  public constructor(data?: T) {
+  private formsService: FormsService = null;
+
+  public constructor(formsService: FormsService, data?: T) {
+    this.formsService = formsService;
     this.init(data);
   }
 
@@ -14,5 +17,15 @@ export class DataItem<T> {
     if (data) {
       _.merge(this.data, data);
     }
+  }
+
+  public setData(data: T): DataItem<T> {
+    this.data = data;
+    return this;
+  }
+
+  public createForm(): DataItem<T> {
+    this.metadata.form = this.formsService.createFormGroup(this);
+    return this;
   }
 }
