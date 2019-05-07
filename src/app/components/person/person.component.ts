@@ -8,7 +8,7 @@ import {DataItem} from '../../models/data-item';
 })
 export class PersonComponent implements OnInit {
 
-  @Input() public viewModel: DataItem<Person> = null;
+  @Input() public vm: DataItem<Person> = null;
 
   constructor() { }
 

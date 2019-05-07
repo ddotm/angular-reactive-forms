@@ -1,0 +1,11 @@
+<div class="form-group" [formGroup]="formGroup">
+  <label for="contactType">{{vm.label}}</label>
+  <select class="form-control"
+          id="contactType"
+          formControlName="contactType">
+    <option *ngFor="let dropdownOption of vm.dropdownOptions"
+            [ngValue]="dropdownOption.value">
+      {{dropdownOption.label}}
+    </option>
+  </select>
+</div>

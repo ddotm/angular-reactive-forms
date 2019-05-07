@@ -14,7 +14,7 @@ import {Person} from '../../models/person';
 export class FormArrayContainerComponent implements OnInit, OnDestroy {
 
   private subs: Array<Subscription> = new Array<Subscription>();
-  public viewModel: Array<DataItem<Person>> = new Array<DataItem<Person>>();
+  public vm: Array<DataItem<Person>> = new Array<DataItem<Person>>();
 
   constructor(private dataService: DataService,
               public formsService: FormsService) {
@@ -34,16 +34,16 @@ export class FormArrayContainerComponent implements OnInit, OnDestroy {
             if (dataItem.data.firstName === 'Bob') {
               dataItem.metadata.fieldProps.firstName.label = 'Custom label for Bob';
             }
-            this.viewModel.push(dataItem);
+            this.vm.push(dataItem);
           });
-          console.log(this.viewModel);
+          console.log(this.vm);
         }
       });
     this.subs.push(sub);
   }
 
   public save() {
-    const persons: Array<Person> = _.map(this.viewModel, (dataItem: DataItem<Person>) => {
+    const persons: Array<Person> = _.map(this.vm, (dataItem: DataItem<Person>) => {
       return dataItem.data;
     });
     this.dataService.saveData(persons);
