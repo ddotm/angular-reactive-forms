@@ -5,23 +5,16 @@
                   [controlName]="'contactType'"
                   [vm]="vm.metadata.fieldProps['contactType']"></app-dropdown>
 
-    <div class="form-group col-2"
-         [ngClass]="vm.metadata.fieldProps['firstName'].class">
-      <label for="firstName">{{vm.metadata.fieldProps['firstName'].label}}</label>
-      <input type="text"
-             class="form-control"
-             id="firstName"
-             formControlName="firstName"
-             placeholder="">
-    </div>
-    <div class="form-group col-3">
-      <label for="lastName">Last Name</label>
-      <input type="text"
-             class="form-control"
-             id="lastName"
-             formControlName="lastName"
-             placeholder="">
-    </div>
+    <app-input class="col-2"
+               [formGroup]="vm.metadata.form"
+               [controlName]="'firstName'"
+               [vm]="vm.metadata.fieldProps['firstName']"></app-input>
+
+    <app-input class="col-3"
+               [formGroup]="vm.metadata.form"
+               [controlName]="'lastName'"
+               [vm]="vm.metadata.fieldProps['lastName']"></app-input>
+
     <div class="form-group col-2">
       <label for="dob">DOB</label>
       <input type="text"

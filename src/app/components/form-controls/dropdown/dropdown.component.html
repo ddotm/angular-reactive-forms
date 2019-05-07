@@ -1,7 +1,10 @@
 <div class="form-group"
-     [formGroup]="formGroup">
+     [formGroup]="formGroup"
+     [ngClass]=vm.class>
 
-  <label [for]="controlName">{{vm.label}}</label>
+  <label [for]="controlName">
+    {{vm.label}}
+  </label>
   <p-dropdown [options]="vm.dropdownOptions"
               [id]="controlName"
               [formControlName]="controlName"></p-dropdown>

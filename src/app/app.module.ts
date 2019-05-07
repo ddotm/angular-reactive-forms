@@ -9,8 +9,11 @@ import {FormArrayContainerComponent} from './components/form-array-container/for
 import {PersonComponent} from './components/person/person.component';
 import {FormSummaryUtilityComponent} from './components/form-summary-utility/form-summary-utility.component';
 import {DropdownComponent} from './components/form-controls/dropdown/dropdown.component';
+import {InputComponent} from './components/form-controls/input/input.component';
 
 import {DropdownModule} from 'primeng/dropdown';
+import {InputTextModule} from 'primeng/inputtext';
+const PrimeNgModules = [DropdownModule, InputTextModule];
 
 @NgModule({
   declarations: [
@@ -18,12 +21,13 @@ import {DropdownModule} from 'primeng/dropdown';
     FormArrayContainerComponent,
     PersonComponent,
     FormSummaryUtilityComponent,
-    DropdownComponent
+    DropdownComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    DropdownModule,
+    ...PrimeNgModules,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule

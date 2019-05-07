@@ -32,6 +32,10 @@ export class Person {
       firstName: new FieldProps({
         label: 'First Name',
         class: 'text-danger'
+      }),
+      lastName: new FieldProps({
+        label: 'Last Name',
+        class: 'font-weight-bold'
       })
     };
   }

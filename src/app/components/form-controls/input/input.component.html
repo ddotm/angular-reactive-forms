@@ -1,0 +1,14 @@
+<div class="form-group"
+     [formGroup]="formGroup"
+     [ngClass]="vm.class">
+
+  <label [for]="controlName">
+    {{vm.label}}
+  </label>
+  <input pInputText
+         type="text"
+         class="form-control"
+         [id]="controlName"
+         [formControlName]="controlName"
+         placeholder="">
+</div>
