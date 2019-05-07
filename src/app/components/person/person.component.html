@@ -15,14 +15,11 @@
                [controlName]="'lastName'"
                [vm]="vm.metadata.fieldProps['lastName']"></app-input>
 
-    <div class="form-group col-2">
-      <label for="dob">DOB</label>
-      <input type="text"
-             class="form-control"
-             id="dob"
-             formControlName="dob"
-             placeholder="">
-    </div>
+    <app-date class="col-4"
+              [formGroup]="vm.metadata.form"
+              [controlName]="'dob'"
+              [vm]="vm.metadata.fieldProps['dob']"></app-date>
+
   </div>
 </form>
 <app-form-summary-utility [form]="vm.metadata.form"></app-form-summary-utility>

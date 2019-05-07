@@ -10,10 +10,14 @@ import {PersonComponent} from './components/person/person.component';
 import {FormSummaryUtilityComponent} from './components/form-summary-utility/form-summary-utility.component';
 import {DropdownComponent} from './components/form-controls/dropdown/dropdown.component';
 import {InputComponent} from './components/form-controls/input/input.component';
+import {DateComponent} from './components/form-controls/date/date.component';
 
 import {DropdownModule} from 'primeng/dropdown';
 import {InputTextModule} from 'primeng/inputtext';
-const PrimeNgModules = [DropdownModule, InputTextModule];
+import {CalendarModule} from 'primeng/calendar';
+
+const InputComponents = [DropdownComponent, InputComponent, DateComponent];
+const PrimeNgModules = [DropdownModule, InputTextModule, CalendarModule];
 
 @NgModule({
   declarations: [
@@ -21,8 +25,7 @@ const PrimeNgModules = [DropdownModule, InputTextModule];
     FormArrayContainerComponent,
     PersonComponent,
     FormSummaryUtilityComponent,
-    DropdownComponent,
-    InputComponent
+    ...InputComponents
   ],
   imports: [
     BrowserModule,

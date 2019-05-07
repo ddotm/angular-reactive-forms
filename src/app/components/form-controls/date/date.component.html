@@ -1,0 +1,11 @@
+<div class="form-group"
+     [formGroup]="formGroup"
+     [ngClass]=vm.class>
+
+  <label [for]="controlName" class="d-block">
+    {{vm.label}}
+  </label>
+  <p-calendar [showIcon]="true"
+              [id]="controlName"
+              [formControlName]="controlName"></p-calendar>
+</div>

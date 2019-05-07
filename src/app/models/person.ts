@@ -36,6 +36,10 @@ export class Person {
       lastName: new FieldProps({
         label: 'Last Name',
         class: 'font-weight-bold'
+      }),
+      dob: new FieldProps({
+        label: 'Date of Birth',
+        class: ''
       })
     };
   }
