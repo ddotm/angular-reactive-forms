@@ -21,7 +21,7 @@ export class Person {
   public setFormProps(metadata: ModelMetadata): void {
     metadata.fieldProps = {
       firstName: new FieldProps({
-        label: 'First Name (maybe)',
+        label: 'First Name',
         class: 'text-danger'
       })
     };

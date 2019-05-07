@@ -1,10 +1,10 @@
 import * as _ from 'lodash';
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {DataService} from '../services/data.service';
-import {DataItem} from '../models/data-item';
+import {DataService} from '../../services/data.service';
+import {DataItem} from '../../models/data-item';
 import {Subscription} from 'rxjs';
-import {FormsService} from '../services/forms.service';
-import {Person} from '../models/person';
+import {FormsService} from '../../services/forms.service';
+import {Person} from '../../models/person';
 
 @Component({
   selector: 'app-form-array-container',

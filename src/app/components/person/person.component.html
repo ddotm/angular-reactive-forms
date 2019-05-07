@@ -1,0 +1,41 @@
+<form [formGroup]="viewModel.metadata.form">
+  <div class="row">
+    <div class="form-group col-2">
+      <label for="contactType">Contact Type</label>
+      <select class="form-control"
+              id="contactType"
+              formControlName="contactType">
+        <option [ngValue]="'I'">Individual</option>
+        <option [ngValue]="'C'">Company</option>
+        <option [ngValue]="'V'">Venue</option>
+      </select>
+    </div>
+    <div class="form-group col-2" [ngClass]="viewModel.metadata.fieldProps['firstName'].class">
+      <label for="firstName">{{viewModel.metadata.fieldProps['firstName'].label}}</label>
+      <input type="text"
+             class="form-control"
+             id="firstName"
+             formControlName="firstName"
+             placeholder="">
+    </div>
+    <div class="form-group col-3">
+      <label for="lastName">Last Name</label>
+      <input type="text"
+             class="form-control"
+             id="lastName"
+             formControlName="lastName"
+             placeholder="">
+    </div>
+    <div class="form-group col-2">
+      <label for="dob">DOB</label>
+      <input type="text"
+             class="form-control"
+             id="dob"
+             formControlName="dob"
+             placeholder="">
+    </div>
+  </div>
+</form>
+<div>
+  {{viewModel.metadata.form.value | json }}
+</div>
