@@ -5,6 +5,7 @@ import {DataItem} from '../../models/data-item';
 import {Subscription} from 'rxjs';
 import {FormsService} from '../../services/forms.service';
 import {Person} from '../../models/person';
+import {CustomValidators} from '../../services/custom-validators';
 
 @Component({
   selector: 'app-form-array-container',
@@ -36,11 +37,17 @@ export class FormArrayContainerComponent implements OnInit, OnDestroy {
 
   private createDataItem(person: Person): DataItem<Person> {
     // Assign specific type to the data property of the data item container
-    const dataItem = new DataItem<Person>(this.formsService)
-      .setData(new Person(person));
+    const dataItem = new DataItem<Person>(this.formsService, new Person(person));
     dataItem.metadata.fieldProps = dataItem.data.getFieldProps();
     dataItem.metadata.validators = dataItem.data.getValidators();
     dataItem.createForm();
+
+    // Set custom validators
+    dataItem.metadata.form.controls['startDate'].setValidators(_.concat(dataItem.metadata.validators['startDate'],
+      CustomValidators.dateRange(dataItem.metadata.form, 'startDate', 'endDate')));
+
+    dataItem.metadata.form.controls['endDate'].setValidators(_.concat(dataItem.metadata.validators['endDate'],
+      CustomValidators.dateRange(dataItem.metadata.form, 'startDate', 'endDate')));
 
     // Execute any business logic
     if (dataItem.data.firstName === 'Bob') {

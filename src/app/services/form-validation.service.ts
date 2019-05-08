@@ -30,6 +30,9 @@ export class FormValidationService {
       if (control.errors.email) {
         return 'Invalid email';
       }
+      if (control.errors.invalidDateRange) {
+        return 'Invalid date range';
+      }
     }
     return null;
   }
