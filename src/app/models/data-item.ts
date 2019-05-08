@@ -1,8 +1,9 @@
 import * as _ from 'lodash';
 import {ModelMetadata} from './model-metadata';
 import {FormsService} from '../services/forms.service';
+import {IModel} from './person';
 
-export class DataItem<T> {
+export class DataItem<T extends IModel> {
   public data: T = null;
   public metadata: ModelMetadata = new ModelMetadata();
 
@@ -14,13 +15,9 @@ export class DataItem<T> {
   }
 
   private init<T>(data: T) {
-    if (data) {
-      this.data = _.merge(this.data, data);
-    }
-  }
-
-  public createForm(): DataItem<T> {
+    this.data = _.merge(this.data, data);
+    this.metadata.fieldProps = this.data.getFieldProps();
+    this.metadata.validators = this.data.getValidators();
     this.metadata.form = this.formsService.createFormGroup(this);
-    return this;
   }
 }
