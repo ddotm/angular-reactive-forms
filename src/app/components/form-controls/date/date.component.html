@@ -2,11 +2,16 @@
      [formGroup]="formGroup"
      [ngClass]=vm.class>
 
-  <label [for]="controlName"
-         class="d-block">
-    {{vm.label}}
-  </label>
-  <p-calendar [showIcon]="true"
-              [id]="controlName"
-              [formControlName]="controlName"></p-calendar>
+  <div class="ui-g ui-fluid">
+    <div class="ui-g-12 ui-md-12">
+      <label [for]="controlName"
+             class="d-block">
+        {{vm.label}}
+      </label>
+      <p-calendar [showIcon]="true"
+                  [id]="controlName"
+                  [formControlName]="controlName"></p-calendar>
+    </div>
+  </div>
+
 </div>
