@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import {ModelMetadata} from './model-metadata';
 import {FormsService} from '../services/forms.service';
-import {IModel} from './person';
+import {IModel} from './imodel';
 
 export class DataItem<T extends IModel> {
   public data: T = null;

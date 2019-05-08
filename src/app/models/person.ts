@@ -2,6 +2,7 @@ import * as _ from 'lodash';
 import {FieldProps} from './field-props';
 import {DropdownOption} from './dropdown-option';
 import {ValidatorFn, Validators} from '@angular/forms';
+import {IModel} from './imodel';
 
 export interface IPerson {
   contactType: string;
@@ -10,10 +11,6 @@ export interface IPerson {
   startDate: Date;
   endDate: Date;
   companyName: string;
-}
-export interface IModel {
-  getValidators(): { [key: string]: Array<ValidatorFn> };
-  getFieldProps(): { [key: string]: FieldProps };
 }
 
 export class Person implements IPerson, IModel {
