@@ -1,3 +1,9 @@
 <div *ngFor="let dataItem of vm">
   <app-person [vm]="dataItem"></app-person>
 </div>
+
+<a class="btn btn-primary"
+   (click)="addItem()">
+  Add New
+</a>
+

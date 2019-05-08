@@ -25,16 +25,7 @@ export class FormArrayContainerComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (value: Array<Person>) => {
           _.forEach(value, (person: Person) => {
-            // Assign specific type to the data property of the data item container
-            const dataItem = new DataItem<Person>(this.formsService)
-              .setData(new Person(person))
-              .createForm();
-            dataItem.metadata.fieldProps = dataItem.data.getFieldProps();
-            // Execute any business logic
-            if (dataItem.data.firstName === 'Bob') {
-              dataItem.metadata.displayDiagnostics = true;
-              dataItem.metadata.fieldProps.firstName.label = 'Custom label for Bob';
-            }
+            const dataItem = this.createDataItem(person);
             this.vm.push(dataItem);
           });
           console.log(this.vm);
@@ -43,11 +34,30 @@ export class FormArrayContainerComponent implements OnInit, OnDestroy {
     this.subs.push(sub);
   }
 
+  private createDataItem(person: Person): DataItem<Person> {
+    // Assign specific type to the data property of the data item container
+    const dataItem = new DataItem<Person>(this.formsService)
+      .setData(new Person(person))
+      .createForm();
+    dataItem.metadata.fieldProps = dataItem.data.getFieldProps();
+    // Execute any business logic
+    if (dataItem.data.firstName === 'Bob') {
+      // dataItem.metadata.displayDiagnostics = true;
+      dataItem.metadata.fieldProps.firstName.label = 'Custom label for Bob';
+    }
+    return dataItem;
+  }
+
   public save() {
     const persons: Array<Person> = _.map(this.vm, (dataItem: DataItem<Person>) => {
       return dataItem.data;
     });
     this.dataService.saveData(persons);
+  }
+
+  public addItem(): void {
+    const dataItem: DataItem<Person> = this.createDataItem(new Person());
+    this.vm.push(dataItem);
   }
 
   ngOnDestroy(): void {
