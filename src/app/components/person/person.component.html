@@ -1,6 +1,6 @@
 <form [formGroup]="vm.metadata.form">
   <div class="row">
-    <app-dropdown class="col-1"
+    <app-dropdown class="col-2"
                   [formGroup]="vm.metadata.form"
                   [controlName]="'contactType'"
                   [vm]="vm.metadata.fieldProps['contactType']"></app-dropdown>
@@ -20,7 +20,7 @@
               [controlName]="'dob'"
               [vm]="vm.metadata.fieldProps['dob']"></app-date>
 
-    <app-input class="col-3"
+    <app-input class="col-2"
                [formGroup]="vm.metadata.form"
                [controlName]="'companyName'"
                [vm]="vm.metadata.fieldProps['companyName']"></app-input>

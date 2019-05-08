@@ -2,14 +2,22 @@ import * as _ from 'lodash';
 import {FieldProps} from './field-props';
 import {DropdownOption} from './dropdown-option';
 
-export class Person {
+export interface IPerson {
+  contactType: string;
+  firstName: string;
+  lastName: string;
+  dob: Date;
+  companyName: string;
+}
+
+export class Person implements IPerson {
   public contactType: string = null;
   public firstName: string = null;
   public lastName: string = null;
   public dob: Date = null;
   public companyName: string = null;
 
-  public constructor(data?: any) {
+  public constructor(data?: IPerson) {
     this.init(data);
   }
 

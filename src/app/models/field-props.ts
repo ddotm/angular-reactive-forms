@@ -1,7 +1,16 @@
 import * as _ from 'lodash';
 import {DropdownOption} from './dropdown-option';
 
-export class FieldProps {
+interface ICommonFieldProps {
+  label: string;
+  class: string;
+}
+
+interface IDropdownFieldProps extends ICommonFieldProps {
+  dropdownOptions: Array<DropdownOption>;
+}
+
+export class FieldProps implements ICommonFieldProps, IDropdownFieldProps {
   // Common properties
   label: string = null;
   class: string = null;
@@ -13,7 +22,7 @@ export class FieldProps {
     this.init(data);
   }
 
-  public init<T>(data: T) {
+  public init<T>(data: any) {
     if (data) {
       _.merge(this, data);
     }
