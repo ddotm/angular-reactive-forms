@@ -37,7 +37,9 @@ export class Person implements IPerson, IModel {
 
   public getValidators(): { [key: string]: Array<ValidatorFn> } {
     return {
-      contactType: [Validators.required]
+      contactType: [Validators.required],
+      startDate: [Validators.required],
+      endDate: [Validators.required]
     };
   }
 
