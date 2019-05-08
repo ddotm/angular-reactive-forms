@@ -7,7 +7,8 @@ export interface IPerson {
   contactType: string;
   firstName: string;
   lastName: string;
-  dob: Date;
+  startDate: Date;
+  endDate: Date;
   companyName: string;
 }
 export interface IModel {
@@ -19,7 +20,8 @@ export class Person implements IPerson, IModel {
   public contactType: string = null;
   public firstName: string = null;
   public lastName: string = null;
-  public dob: Date = null;
+  public startDate: Date = null;
+  public endDate: Date = null;
   public companyName: string = null;
 
   public constructor(data?: IPerson) {
@@ -59,8 +61,12 @@ export class Person implements IPerson, IModel {
         label: 'Last Name',
         class: 'font-weight-bold'
       }),
-      dob: new FieldProps({
-        label: 'Date of Birth',
+      startDate: new FieldProps({
+        label: 'Start Date',
+        class: ''
+      }),
+      endDate: new FieldProps({
+        label: 'End Date',
         class: ''
       }),
       companyName: new FieldProps({

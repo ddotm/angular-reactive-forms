@@ -15,11 +15,16 @@ export class DataService {
         contactType: 'I',
         firstName: 'Bob',
         lastName: 'Wright',
-        dob: new Date('1980-01-01'),
+        startDate: new Date('2015-01-01'),
+        endDate: new Date('2017-01-01'),
         companyName: 'Paradigm'
       }),
-      new Person({contactType: 'I', firstName: 'Jean', lastName: 'Hopkins', dob: new Date('1980-02-01'), companyName: 'Coda'}),
-      new Person({contactType: 'I', firstName: 'Jessica', lastName: 'Lange', dob: new Date('1980-03-01'), companyName: 'XRay'})
+      new Person({contactType: 'I',
+        firstName: 'Jean',
+        lastName: 'Hopkins',
+        startDate: new Date('2017-01-01'),
+        endDate: new Date('2018-01-01'),
+        companyName: 'Coda'})
     ];
     return of(people);
   }

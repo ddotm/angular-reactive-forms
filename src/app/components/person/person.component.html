@@ -17,8 +17,13 @@
 
     <app-date class="col-2"
               [formGroup]="vm.metadata.form"
-              [controlName]="'dob'"
-              [vm]="vm.metadata.fieldProps['dob']"></app-date>
+              [controlName]="'startDate'"
+              [vm]="vm.metadata.fieldProps['startDate']"></app-date>
+
+    <app-date class="col-2"
+              [formGroup]="vm.metadata.form"
+              [controlName]="'endDate'"
+              [vm]="vm.metadata.fieldProps['endDate']"></app-date>
 
     <app-input class="col-2"
                [formGroup]="vm.metadata.form"
