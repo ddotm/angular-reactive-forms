@@ -1,0 +1,4 @@
+<div class="text-danger"
+     *ngIf="formValidationService.displayErrors(control)">
+  {{formValidationService.getErrorText(control)}}
+</div>

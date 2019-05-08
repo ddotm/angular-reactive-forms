@@ -15,6 +15,7 @@ import {DateComponent} from './components/form-controls/date/date.component';
 import {DropdownModule} from 'primeng/dropdown';
 import {InputTextModule} from 'primeng/inputtext';
 import {CalendarModule} from 'primeng/calendar';
+import {FieldErrorsComponent} from './components/form-controls/field-errors/field-errors.component';
 
 const InputComponents = [DropdownComponent, InputComponent, DateComponent];
 const PrimeNgModules = [DropdownModule, InputTextModule, CalendarModule];
@@ -25,7 +26,8 @@ const PrimeNgModules = [DropdownModule, InputTextModule, CalendarModule];
     FormArrayContainerComponent,
     PersonComponent,
     FormSummaryUtilityComponent,
-    ...InputComponents
+    ...InputComponents,
+    FieldErrorsComponent
   ],
   imports: [
     BrowserModule,

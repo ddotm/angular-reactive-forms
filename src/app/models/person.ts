@@ -1,6 +1,7 @@
 import * as _ from 'lodash';
 import {FieldProps} from './field-props';
 import {DropdownOption} from './dropdown-option';
+import {ValidatorFn, Validators} from '@angular/forms';
 
 export interface IPerson {
   contactType: string;
@@ -9,8 +10,12 @@ export interface IPerson {
   dob: Date;
   companyName: string;
 }
+export interface IModel {
+  getValidators(): { [key: string]: Array<ValidatorFn> };
+  getFieldProps(): { [key: string]: FieldProps };
+}
 
-export class Person implements IPerson {
+export class Person implements IPerson, IModel {
   public contactType: string = null;
   public firstName: string = null;
   public lastName: string = null;
@@ -28,11 +33,19 @@ export class Person implements IPerson {
     return this;
   }
 
+  public getValidators(): { [key: string]: Array<ValidatorFn> } {
+    return {
+      contactType: [Validators.required]
+    };
+  }
+
   public getFieldProps(): { [key: string]: FieldProps } {
     return {
       contactType: new FieldProps({
         label: 'Contact Type',
+        class: '',
         dropdownOptions: [
+          new DropdownOption({value: null, label: 'Select contact type'}),
           new DropdownOption({value: 'I', label: 'Individual'}),
           new DropdownOption({value: 'C', label: 'Company'}),
           new DropdownOption({value: 'V', label: 'Venue'})

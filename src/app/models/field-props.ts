@@ -18,7 +18,7 @@ export class FieldProps implements ICommonFieldProps, IDropdownFieldProps {
   // Dropdown properties
   dropdownOptions: Array<DropdownOption> = null;
 
-  public constructor(data?: any) {
+  public constructor(data?: ICommonFieldProps | IDropdownFieldProps) {
     this.init(data);
   }
 

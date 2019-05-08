@@ -9,4 +9,7 @@
   <p-dropdown [options]="vm.dropdownOptions"
               [id]="controlName"
               [formControlName]="controlName"></p-dropdown>
+
+  <app-field-errors [formGroup]="formGroup"
+                    [controlName]="controlName"></app-field-errors>
 </div>
