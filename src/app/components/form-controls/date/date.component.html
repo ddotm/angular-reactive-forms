@@ -10,7 +10,8 @@
       </label>
       <p-calendar [showIcon]="true"
                   [id]="controlName"
-                  [formControlName]="controlName"></p-calendar>
+                  [formControlName]="controlName"
+                  (ngModelChange)="revalidate()"></p-calendar>
     </div>
   </div>
   <app-field-errors [formGroup]="formGroup"

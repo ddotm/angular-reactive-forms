@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import {Injectable} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, ValidatorFn} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn} from '@angular/forms';
 import {DataItem} from '../models/data-item';
 import {IModel} from '../models/imodel';
 
@@ -33,6 +33,12 @@ export class FormsService {
       if (!_.isEmpty(formControl)) {
         formControl.setValidators(value);
       }
+    });
+  }
+
+  public revalidate(form: FormGroup): void {
+    _.forEach(form.controls, (control: AbstractControl) => {
+      control.updateValueAndValidity({onlySelf: false});
     });
   }
 }

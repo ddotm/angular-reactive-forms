@@ -10,6 +10,7 @@
          class="form-control"
          [id]="controlName"
          [formControlName]="controlName"
+         (ngModelChange)="revalidate()"
          placeholder="">
 
   <app-field-errors [formGroup]="formGroup"

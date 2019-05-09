@@ -8,7 +8,8 @@
   </label>
   <p-dropdown [options]="vm.dropdownOptions"
               [id]="controlName"
-              [formControlName]="controlName"></p-dropdown>
+              [formControlName]="controlName"
+              (ngModelChange)="revalidate()"></p-dropdown>
 
   <app-field-errors [formGroup]="formGroup"
                     [controlName]="controlName"></app-field-errors>

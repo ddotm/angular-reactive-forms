@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {FieldProps} from '../../../models/field-props';
+import {FormsService} from '../../../services/forms.service';
 
 @Component({
   selector: 'app-date',
@@ -13,10 +14,13 @@ export class DateComponent implements OnInit {
   @Input() public controlName: string = null;
   @Input() public vm: FieldProps = null;
 
-  constructor() {
+  constructor(private formsService: FormsService) {
   }
 
   ngOnInit() {
   }
 
+  public revalidate() {
+    this.formsService.revalidate(this.formGroup);
+  }
 }
