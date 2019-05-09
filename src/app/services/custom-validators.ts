@@ -38,6 +38,22 @@ export class CustomValidators {
     };
   }
 
+  public static requiredIf(form: FormGroup, controlName: string, value: any): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+
+      let error = null;
+      if (CustomValidators.valueProvided(control.value)) {
+        return error;
+      }
+
+      if (form.controls[controlName].value === value) {
+        error = {requiredIf: true};
+      }
+
+      return error;
+    };
+  }
+
   public static dateRange(form: FormGroup, startDateControlName: string, endDateControlName): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
 

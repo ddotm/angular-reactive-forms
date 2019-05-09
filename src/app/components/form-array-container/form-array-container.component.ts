@@ -5,7 +5,6 @@ import {DataItem} from '../../models/data-item';
 import {Subscription} from 'rxjs';
 import {FormsService} from '../../services/forms.service';
 import {Person} from '../../models/person';
-import {CustomValidators} from '../../services/custom-validators';
 
 @Component({
   selector: 'app-form-array-container',
@@ -38,26 +37,7 @@ export class FormArrayContainerComponent implements OnInit, OnDestroy {
   private createDataItem(person: Person): DataItem<Person> {
     // Assign specific type to the data property of the data item container
     const dataItem = new DataItem<Person>(this.formsService, new Person(person));
-    this.addCustomValidators(dataItem.metadata.form, dataItem);
-    this.applyBusinessRules(dataItem);
     return dataItem;
-  }
-
-  private addCustomValidators(form, dataItem) {
-    // Set custom validators
-    form.controls['startDate'].setValidators(_.concat(dataItem.metadata.validators['startDate'],
-      CustomValidators.dateRange(form, 'startDate', 'endDate')));
-
-    form.controls['endDate'].setValidators(_.concat(dataItem.metadata.validators['endDate'],
-      CustomValidators.dateRange(form, 'startDate', 'endDate')));
-  }
-
-  private applyBusinessRules(dataItem) {
-    // Apply any business logic
-    if (dataItem.data.firstName === 'Bob') {
-      dataItem.metadata.displayDiagnostics = true;
-      dataItem.metadata.fieldProps.firstName.label = 'Custom label for Bob';
-    }
   }
 
   public save() {

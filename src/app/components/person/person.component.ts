@@ -10,9 +10,18 @@ export class PersonComponent implements OnInit {
 
   @Input() public vm: DataItem<Person> = null;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
   }
 
+  ngOnInit() {
+    this.applyBusinessRules();
+  }
+
+  private applyBusinessRules() {
+    // Apply any business logic
+    if (this.vm.data.firstName === 'Bob') {
+      this.vm.metadata.displayDiagnostics = true;
+      this.vm.metadata.fieldProps.firstName.label = 'Custom label for Bob';
+    }
+  }
 }

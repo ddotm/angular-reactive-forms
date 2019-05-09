@@ -17,7 +17,8 @@ export class DataItem<T extends IModel> {
   private init<T>(data: T) {
     this.data = _.merge(this.data, data);
     this.metadata.fieldProps = this.data.getFieldProps();
-    this.metadata.validators = this.data.getValidators();
     this.metadata.form = this.formsService.createFormGroup(this);
+    this.metadata.validators = this.data.getValidators(this.metadata.form);
+    this.formsService.setValidators(this.metadata.form, this.metadata.validators);
   }
 }

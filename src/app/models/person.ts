@@ -1,8 +1,9 @@
 import * as _ from 'lodash';
 import {FieldProps} from './field-props';
 import {DropdownOption} from './dropdown-option';
-import {ValidatorFn, Validators} from '@angular/forms';
+import {FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {IModel} from './imodel';
+import {CustomValidators} from '../services/custom-validators';
 
 export interface IPerson {
   contactType: string;
@@ -32,12 +33,24 @@ export class Person implements IPerson, IModel {
     return this;
   }
 
-  public getValidators(): { [key: string]: Array<ValidatorFn> } {
-    return {
-      contactType: [Validators.required],
-      startDate: [Validators.required],
-      endDate: [Validators.required]
+  public getValidators(form: FormGroup): { [key: string]: Array<ValidatorFn> } {
+    const allValidators = {
+      contactType: [
+        Validators.required
+      ],
+      startDate: [
+        Validators.required,
+        CustomValidators.dateRange(form, 'startDate', 'endDate')
+      ],
+      endDate: [
+        Validators.required,
+        CustomValidators.dateRange(form, 'startDate', 'endDate')
+      ],
+      companyName: [
+        CustomValidators.requiredIf(form, 'contactType', 'C')
+      ]
     };
+    return allValidators;
   }
 
   public getFieldProps(): { [key: string]: FieldProps } {
