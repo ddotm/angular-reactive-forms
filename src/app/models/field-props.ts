@@ -4,6 +4,7 @@ import {DropdownOption} from './dropdown-option';
 interface ICommonFieldProps {
   label: string;
   class: string;
+  revalidate?: boolean;
 }
 
 interface IDropdownFieldProps extends ICommonFieldProps {
@@ -14,6 +15,7 @@ export class FieldProps implements ICommonFieldProps, IDropdownFieldProps {
   // Common properties
   label: string = null;
   class: string = null;
+  revalidate: boolean = true;
 
   // Dropdown properties
   dropdownOptions: Array<DropdownOption> = null;

@@ -1,47 +1,47 @@
 <form [formGroup]="vm.metadata.form">
   <div class="row">
 
-    <app-input *ngIf="vm.metadata.controlExists('entityId')"
+    <app-input *ngIf="vm.metadata.controlExists(propNames.entityId)"
                class="col-1"
                [formGroup]="vm.metadata.form"
-               [controlName]="'entityId'"
-               [vm]="vm.metadata.fieldProps['entityId']"></app-input>
+               [controlName]="propNames.entityId"
+               [vm]="vm.metadata.fieldProps[propNames.entityId]"></app-input>
 
-    <app-dropdown *ngIf="vm.metadata.controlExists('contactType')"
+    <app-dropdown *ngIf="vm.metadata.controlExists(propNames.contactType)"
                   class="col-1"
                   [formGroup]="vm.metadata.form"
-                  [controlName]="'contactType'"
-                  [vm]="vm.metadata.fieldProps['contactType']"></app-dropdown>
+                  [controlName]="propNames.contactType"
+                  [vm]="vm.metadata.fieldProps[propNames.contactType]"></app-dropdown>
 
-    <app-input *ngIf="vm.metadata.controlExists('firstName')"
+    <app-input *ngIf="vm.metadata.controlExists(propNames.firstName)"
                class="col-2"
                [formGroup]="vm.metadata.form"
-               [controlName]="'firstName'"
-               [vm]="vm.metadata.fieldProps['firstName']"></app-input>
+               [controlName]="propNames.firstName"
+               [vm]="vm.metadata.fieldProps[propNames.firstName]"></app-input>
 
-    <app-input *ngIf="vm.metadata.controlExists('lastName')"
+    <app-input *ngIf="vm.metadata.controlExists(propNames.lastName)"
                class="col-2"
                [formGroup]="vm.metadata.form"
-               [controlName]="'lastName'"
-               [vm]="vm.metadata.fieldProps['lastName']"></app-input>
+               [controlName]="propNames.lastName"
+               [vm]="vm.metadata.fieldProps[propNames.lastName]"></app-input>
 
-    <app-date *ngIf="vm.metadata.controlExists('startDate')"
+    <app-date *ngIf="vm.metadata.controlExists(propNames.startDate)"
               class="col-1"
               [formGroup]="vm.metadata.form"
-              [controlName]="'startDate'"
-              [vm]="vm.metadata.fieldProps['startDate']"></app-date>
+              [controlName]="propNames.startDate"
+              [vm]="vm.metadata.fieldProps[propNames.startDate]"></app-date>
 
-    <app-date *ngIf="vm.metadata.controlExists('endDate')"
+    <app-date *ngIf="vm.metadata.controlExists(propNames.endDate)"
               class="col-1"
               [formGroup]="vm.metadata.form"
-              [controlName]="'endDate'"
-              [vm]="vm.metadata.fieldProps['endDate']"></app-date>
+              [controlName]="propNames.endDate"
+              [vm]="vm.metadata.fieldProps[propNames.endDate]"></app-date>
 
-    <app-input *ngIf="vm.metadata.controlExists('companyName')"
+    <app-input *ngIf="vm.metadata.controlExists(propNames.companyName)"
                class="col-2"
                [formGroup]="vm.metadata.form"
-               [controlName]="'companyName'"
-               [vm]="vm.metadata.fieldProps['companyName']"></app-input>
+               [controlName]="propNames.companyName"
+               [vm]="vm.metadata.fieldProps[propNames.companyName]"></app-input>
 
   </div>
 </form>

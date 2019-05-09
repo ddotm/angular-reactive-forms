@@ -5,6 +5,16 @@ import {FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {IModel} from './imodel';
 import {CustomValidators} from '../services/custom-validators';
 
+export enum EntityPropNames {
+  entityId = 'entityId',
+  contactType = 'contactType',
+  firstName = 'firstName',
+  lastName = 'lastName',
+  startDate = 'startDate',
+  endDate = 'endDate',
+  companyName = 'companyName'
+}
+
 export interface IEntity {
   entityId: number
   contactType: string;
@@ -36,65 +46,73 @@ export class Entity implements IEntity, IModel {
   }
 
   public getValidators(form: FormGroup): { [key: string]: Array<ValidatorFn> } {
+    const customValidatorFields = [EntityPropNames.startDate, EntityPropNames.endDate, EntityPropNames.contactType];
     const allValidators = {
       contactType: [
         Validators.required
       ],
       startDate: [
         Validators.required,
-        CustomValidators.dateRange(form, 'startDate', 'endDate')
+        CustomValidators.dateRange(form, EntityPropNames.startDate, EntityPropNames.endDate)
       ],
       endDate: [
         Validators.required,
-        CustomValidators.dateRange(form, 'startDate', 'endDate')
+        CustomValidators.dateRange(form, EntityPropNames.startDate, EntityPropNames.endDate)
       ],
       companyName: [
-        CustomValidators.requiredIf(form, 'contactType', 'C')
+        CustomValidators.requiredIf(form, EntityPropNames.contactType, 'C')
       ]
     };
     return allValidators;
   }
 
   public getFieldProps(): { [key: string]: FieldProps } {
-    return {
-      entityId: new FieldProps({
-        label: 'ID',
-        class: ''
-      }),
-      contactType: new FieldProps({
-        label: 'Contact Type',
-        class: '',
-        dropdownOptions: [
-          new DropdownOption({value: null, label: 'Select contact type'}),
-          new DropdownOption({value: 'I', label: 'Individual'}),
-          new DropdownOption({value: 'C', label: 'Company'}),
-          new DropdownOption({value: 'V', label: 'Venue'})
-        ]
-      }),
-      firstName: new FieldProps({
-        label: 'First Name',
-        class: 'text-danger'
-      }),
-      lastName: new FieldProps({
-        label: 'Last Name',
-        class: 'font-weight-bold'
-      }),
-      startDate: new FieldProps({
-        label: 'Start Date',
-        class: ''
-      }),
-      endDate: new FieldProps({
-        label: 'End Date',
-        class: ''
-      }),
-      companyName: new FieldProps({
-        label: 'Company Name',
-        class: ''
-      })
-    };
+    const fieldProps: { [key: string]: FieldProps } = {};
+    fieldProps[EntityPropNames.entityId] = new FieldProps({
+      label: 'ID',
+      class: ''
+    });
+
+    fieldProps[EntityPropNames.contactType] = new FieldProps({
+      label: 'Contact Type',
+      class: '',
+      dropdownOptions: [
+        new DropdownOption({value: null, label: 'Select contact type'}),
+        new DropdownOption({value: 'I', label: 'Individual'}),
+        new DropdownOption({value: 'C', label: 'Company'}),
+        new DropdownOption({value: 'V', label: 'Venue'})
+      ]
+    });
+
+    fieldProps[EntityPropNames.firstName] = new FieldProps({
+      label: 'First Name',
+      class: 'text-danger'
+    });
+
+    fieldProps[EntityPropNames.lastName] = new FieldProps({
+      label: 'Last Name',
+      class: 'font-weight-bold'
+    });
+
+    fieldProps[EntityPropNames.startDate] = new FieldProps({
+      label: 'Start Date',
+      class: ''
+    });
+
+    fieldProps[EntityPropNames.endDate] = new FieldProps({
+      label: 'End Date',
+      class: ''
+    });
+
+    fieldProps[EntityPropNames.companyName] = new FieldProps({
+      label: 'Company Name',
+      class: ''
+    });
+
+    return fieldProps;
   }
 
   getFormControlExclusionList(): Array<string> {
-    return ['entityId'];
+    return [EntityPropNames.entityId];
   }
 }

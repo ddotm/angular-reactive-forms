@@ -21,6 +21,8 @@ export class DropdownComponent implements OnInit {
   }
 
   public revalidate() {
-    this.formsService.revalidate(this.formGroup);
+    if (this.vm.revalidate) {
+      this.formsService.revalidate(this.formGroup);
+    }
   }
 }

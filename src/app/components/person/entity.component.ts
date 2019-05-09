@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Entity} from '../../models/entity';
+import {Entity, EntityPropNames} from '../../models/entity';
 import {DataItem} from '../../models/data-item';
 import {FormsService} from '../../services/forms.service';
 
@@ -10,6 +10,7 @@ import {FormsService} from '../../services/forms.service';
 export class EntityComponent implements OnInit {
 
   @Input() public vm: DataItem<Entity> = null;
+  public propNames = EntityPropNames;
 
   constructor(private formsService: FormsService) {
   }
