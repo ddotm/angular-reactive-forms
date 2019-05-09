@@ -5,7 +5,8 @@ import {FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {IModel} from './imodel';
 import {CustomValidators} from '../services/custom-validators';
 
-export interface IPerson {
+export interface IEntity {
+  entityId: number
   contactType: string;
   firstName: string;
   lastName: string;
@@ -14,7 +15,8 @@ export interface IPerson {
   companyName: string;
 }
 
-export class Person implements IPerson, IModel {
+export class Entity implements IEntity, IModel {
+  public entityId: number = null;
   public contactType: string = null;
   public firstName: string = null;
   public lastName: string = null;
@@ -22,11 +24,11 @@ export class Person implements IPerson, IModel {
   public endDate: Date = null;
   public companyName: string = null;
 
-  public constructor(data?: IPerson) {
+  public constructor(data?: IEntity) {
     this.init(data);
   }
 
-  public init(data?: any): Person {
+  public init(data?: any): Entity {
     if (data) {
       _.merge(this, data);
     }
@@ -55,6 +57,10 @@ export class Person implements IPerson, IModel {
 
   public getFieldProps(): { [key: string]: FieldProps } {
     return {
+      entityId: new FieldProps({
+        label: 'ID',
+        class: ''
+      }),
       contactType: new FieldProps({
         label: 'Contact Type',
         class: '',
@@ -86,5 +92,9 @@ export class Person implements IPerson, IModel {
         class: ''
       })
     };
+  }
+
+  getFormControlExclusionList(): Array<string> {
+    return ['entityId'];
   }
 }

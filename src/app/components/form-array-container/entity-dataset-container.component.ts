@@ -1,30 +1,30 @@
 import * as _ from 'lodash';
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {DataService} from '../../services/data.service';
+import {EntityDataService} from '../../services/entity-data.service';
 import {DataItem} from '../../models/data-item';
 import {Subscription} from 'rxjs';
 import {FormsService} from '../../services/forms.service';
-import {Person} from '../../models/person';
+import {Entity} from '../../models/entity';
 
 @Component({
-  selector: 'app-form-array-container',
-  templateUrl: './form-array-container.component.html'
+  selector: 'app-entity-dataset-container',
+  templateUrl: './entity-dataset-container.component.html'
 })
 
-export class FormArrayContainerComponent implements OnInit, OnDestroy {
+export class EntityDatasetContainerComponent implements OnInit, OnDestroy {
 
   private subs: Array<Subscription> = new Array<Subscription>();
-  public vm: Array<DataItem<Person>> = new Array<DataItem<Person>>();
+  public vm: Array<DataItem<Entity>> = new Array<DataItem<Entity>>();
 
-  constructor(private dataService: DataService,
+  constructor(private dataService: EntityDataService,
               public formsService: FormsService) {
   }
 
   ngOnInit() {
-    const sub = this.dataService.getData()
+    const sub = this.dataService.get()
       .subscribe({
-        next: (value: Array<Person>) => {
-          _.forEach(value, (person: Person) => {
+        next: (value: Array<Entity>) => {
+          _.forEach(value, (person: Entity) => {
             const dataItem = this.createDataItem(person);
             this.vm.push(dataItem);
           });
@@ -34,21 +34,21 @@ export class FormArrayContainerComponent implements OnInit, OnDestroy {
     this.subs.push(sub);
   }
 
-  private createDataItem(person: Person): DataItem<Person> {
+  private createDataItem(person: Entity): DataItem<Entity> {
     // Assign specific type to the data property of the data item container
-    const dataItem = new DataItem<Person>(this.formsService, new Person(person));
+    const dataItem = new DataItem<Entity>(this.formsService, new Entity(person));
     return dataItem;
   }
 
   public save() {
-    const persons: Array<Person> = _.map(this.vm, (dataItem: DataItem<Person>) => {
+    const persons: Array<Entity> = _.map(this.vm, (dataItem: DataItem<Entity>) => {
       return dataItem.data;
     });
-    this.dataService.saveData(persons);
+    this.dataService.save(persons);
   }
 
   public addItem(): void {
-    const dataItem: DataItem<Person> = this.createDataItem(new Person());
+    const dataItem: DataItem<Entity> = this.createDataItem(new Entity());
     this.vm.push(dataItem);
   }
 

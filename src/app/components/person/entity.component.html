@@ -1,36 +1,50 @@
 <form [formGroup]="vm.metadata.form">
   <div class="row">
-    <app-dropdown class="col-2"
+
+    <app-input *ngIf="vm.metadata.controlExists('entityId')"
+               class="col-1"
+               [formGroup]="vm.metadata.form"
+               [controlName]="'entityId'"
+               [vm]="vm.metadata.fieldProps['entityId']"></app-input>
+
+    <app-dropdown *ngIf="vm.metadata.controlExists('contactType')"
+                  class="col-1"
                   [formGroup]="vm.metadata.form"
                   [controlName]="'contactType'"
                   [vm]="vm.metadata.fieldProps['contactType']"></app-dropdown>
 
-    <app-input class="col-2"
+    <app-input *ngIf="vm.metadata.controlExists('firstName')"
+               class="col-2"
                [formGroup]="vm.metadata.form"
                [controlName]="'firstName'"
                [vm]="vm.metadata.fieldProps['firstName']"></app-input>
 
-    <app-input class="col-2"
+    <app-input *ngIf="vm.metadata.controlExists('lastName')"
+               class="col-2"
                [formGroup]="vm.metadata.form"
                [controlName]="'lastName'"
                [vm]="vm.metadata.fieldProps['lastName']"></app-input>
 
-    <app-date class="col-2"
+    <app-date *ngIf="vm.metadata.controlExists('startDate')"
+              class="col-1"
               [formGroup]="vm.metadata.form"
               [controlName]="'startDate'"
               [vm]="vm.metadata.fieldProps['startDate']"></app-date>
 
-    <app-date class="col-2"
+    <app-date *ngIf="vm.metadata.controlExists('endDate')"
+              class="col-1"
               [formGroup]="vm.metadata.form"
               [controlName]="'endDate'"
               [vm]="vm.metadata.fieldProps['endDate']"></app-date>
 
-    <app-input class="col-2"
+    <app-input *ngIf="vm.metadata.controlExists('companyName')"
+               class="col-2"
                [formGroup]="vm.metadata.form"
                [controlName]="'companyName'"
                [vm]="vm.metadata.fieldProps['companyName']"></app-input>
 
   </div>
 </form>
-<app-form-summary-utility *ngIf="vm.metadata.displayDiagnostics" [form]="vm.metadata.form"></app-form-summary-utility>
+<app-form-summary-utility *ngIf="vm.metadata.displayDiagnostics"
+                          [form]="vm.metadata.form"></app-form-summary-utility>
 

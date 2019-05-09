@@ -5,4 +5,6 @@ export interface IModel {
   getFieldProps(): { [key: string]: FieldProps };
 
   getValidators(form: FormGroup): { [key: string]: Array<ValidatorFn> };
+
+  getFormControlExclusionList(): Array<string>;
 }

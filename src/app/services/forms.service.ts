@@ -13,11 +13,11 @@ export class FormsService {
   }
 
   public createFormGroup<T extends IModel>(dataItem: DataItem<T>): FormGroup {
-    const exclusionPropList = ['metadata'];
+    const exclusionPropList = dataItem.data.getFormControlExclusionList();
     const formGroup = this.fb.group({});
 
     _.forOwn(dataItem.data, function(value, key) {
-      if (_.includes(exclusionPropList, key) || _.isFunction(key) || _.isArray(key) || _.isObject(key)) {
+      if (_.isFunction(value) || _.isArray(value) || (_.isObject(value) && !_.isDate(value)) || _.includes(exclusionPropList, key)) {
         return true;
       }
       let formControl = new FormControl(value, []);
@@ -27,9 +27,12 @@ export class FormsService {
     return formGroup;
   }
 
-  public setValidators(form: FormGroup, validators:  { [key: string]: Array<ValidatorFn> }): void {
-    _.forOwn(validators,  (value,  key) => {
-      form.controls[key].setValidators(value);
+  public setValidators(form: FormGroup, validators: { [key: string]: Array<ValidatorFn> }): void {
+    _.forOwn(validators, (value, key) => {
+      const formControl = form.controls[key];
+      if (!_.isEmpty(formControl)) {
+        formControl.setValidators(value);
+      }
     });
   }
 }

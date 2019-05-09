@@ -5,8 +5,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {FormArrayContainerComponent} from './components/form-array-container/form-array-container.component';
-import {PersonComponent} from './components/person/person.component';
+import {EntityDatasetContainerComponent} from './components/form-array-container/entity-dataset-container.component';
+import {EntityComponent} from './components/person/entity.component';
 import {FormSummaryUtilityComponent} from './components/form-summary-utility/form-summary-utility.component';
 import {DropdownComponent} from './components/form-controls/dropdown/dropdown.component';
 import {InputComponent} from './components/form-controls/input/input.component';
@@ -23,8 +23,8 @@ const PrimeNgModules = [DropdownModule, InputTextModule, CalendarModule];
 @NgModule({
   declarations: [
     AppComponent,
-    FormArrayContainerComponent,
-    PersonComponent,
+    EntityDatasetContainerComponent,
+    EntityComponent,
     FormSummaryUtilityComponent,
     ...InputComponents,
     FieldErrorsComponent

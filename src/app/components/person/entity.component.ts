@@ -1,14 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Person} from '../../models/person';
+import {Entity} from '../../models/entity';
 import {DataItem} from '../../models/data-item';
 
 @Component({
-  selector: 'app-person',
-  templateUrl: './person.component.html'
+  selector: 'app-entity',
+  templateUrl: './entity.component.html'
 })
-export class PersonComponent implements OnInit {
+export class EntityComponent implements OnInit {
 
-  @Input() public vm: DataItem<Person> = null;
+  @Input() public vm: DataItem<Entity> = null;
 
   constructor() {
   }

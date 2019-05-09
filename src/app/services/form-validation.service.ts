@@ -1,7 +1,6 @@
+import * as _ from 'lodash';
 import {Injectable} from '@angular/core';
 import {AbstractControl} from '@angular/forms';
-
-declare var _: any;
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +10,11 @@ export class FormValidationService {
   constructor() {
   }
 
-  displayErrors(control: AbstractControl): boolean {
+  public displayErrors(control: AbstractControl): boolean {
     return control.parent.dirty && !_.isEmpty(control.errors);
   }
 
-  getErrorText(control: AbstractControl): string | null {
+  public getErrorText(control: AbstractControl): string | null {
     // console.log(JSON.stringify(control.errors));
     if (!_.isEmpty(control.errors)) {
       if (control.errors.requiredIf ||

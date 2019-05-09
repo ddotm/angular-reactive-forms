@@ -1,17 +1,18 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {Person} from '../models/person';
+import {Entity, IEntity} from '../models/entity';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
+export class EntityDataService {
   constructor() {
   }
 
-  public getData(): Observable<Array<Person>> {
-    let people: Array<Person> = [
-      new Person({
+  public get(): Observable<Array<Entity>> {
+    let entities: Array<Entity> = [
+      new Entity({
+        entityId: 1,
         contactType: 'I',
         firstName: 'Bob',
         lastName: 'Wright',
@@ -19,17 +20,19 @@ export class DataService {
         endDate: new Date('2017-01-01'),
         companyName: 'Paradigm'
       }),
-      new Person({contactType: 'I',
+      new Entity({
+        entityId: 2,
+        contactType: 'I',
         firstName: 'Jean',
         lastName: 'Hopkins',
         startDate: new Date('2017-01-01'),
         endDate: new Date('2018-01-01'),
-        companyName: 'Coda'})
+        companyName: 'Coda'
+      })
     ];
-    return of(people);
+    return of(entities);
   }
 
-  public saveData(data: Array<Person>): void {
-
+  public save(data: Array<IEntity>): void {
   }
 }
