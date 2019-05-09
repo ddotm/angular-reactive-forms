@@ -14,7 +14,7 @@ export class DataItem<T extends IModel> {
     this.init(data);
   }
 
-  private init<T>(data: T) {
+  private init(data: T) {
     this.data = _.merge(this.data, data);
     this.metadata.fieldProps = this.data.getFieldProps();
     this.metadata.form = this.formsService.createFormGroup(this);

@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {EntityDatasetContainerComponent} from "./components/form-array-container/entity-dataset-container.component";
+import {EntitiesContainerComponent} from "./components/entities-container/entities-container.component";
 
 const routes: Routes = [
-  { path: '', component: EntityDatasetContainerComponent }
+  { path: '', component: EntitiesContainerComponent }
 ];
 
 @NgModule({

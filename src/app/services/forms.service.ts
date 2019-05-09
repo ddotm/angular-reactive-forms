@@ -16,11 +16,11 @@ export class FormsService {
     const exclusionPropList = dataItem.data.getFormControlExclusionList();
     const formGroup = this.fb.group({});
 
-    _.forOwn(dataItem.data, function(value, key) {
+    _.forOwn(dataItem.data, (value, key) => {
       if (_.isFunction(value) || _.isArray(value) || (_.isObject(value) && !_.isDate(value)) || _.includes(exclusionPropList, key)) {
         return true;
       }
-      let formControl = new FormControl(value, []);
+      const formControl = new FormControl(value, []);
       formGroup.addControl(key, formControl);
     });
 

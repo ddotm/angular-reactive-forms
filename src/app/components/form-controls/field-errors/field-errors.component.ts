@@ -20,5 +20,4 @@ export class FieldErrorsComponent implements OnInit {
   ngOnInit() {
     this.control = this.formGroup.controls[this.controlName];
   }
-
 }
