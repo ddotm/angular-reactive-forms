@@ -21,4 +21,8 @@ export class DataItem<T extends IModel> {
     this.metadata.validators = this.data.getValidators(this.metadata.form);
     this.formsService.setValidators(this.metadata.form, this.metadata.validators);
   }
+
+  public revalidate() {
+    this.formsService.revalidate(this.metadata.form);
+  }
 }

@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import {DropdownOption} from './dropdown-option';
 
 interface ICommonFieldProps {
-  label: string;
+  label?: string;
   class?: string;
   revalidate?: boolean;
 }
