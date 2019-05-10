@@ -3,7 +3,7 @@ import {DropdownOption} from './dropdown-option';
 
 interface ICommonFieldProps {
   label: string;
-  class: string;
+  class?: string;
   revalidate?: boolean;
 }
 

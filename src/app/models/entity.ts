@@ -111,8 +111,4 @@ export class Entity implements IEntity, IModel {
 
     return fieldProps;
   }
-
-  getFormControlExclusionList(): Array<string> {
-    return [EntityPropNames.entityId];
-  }
 }

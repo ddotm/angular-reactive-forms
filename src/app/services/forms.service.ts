@@ -1,8 +1,8 @@
 import * as _ from 'lodash';
 import {Injectable} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn} from '@angular/forms';
-import {DataItem} from '../models/data-item';
 import {IModel} from '../models/imodel';
+import {DataItem} from '../models/data-item';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +13,10 @@ export class FormsService {
   }
 
   public createFormGroup<T extends IModel>(dataItem: DataItem<T>): FormGroup {
-    const exclusionPropList = dataItem.data.getFormControlExclusionList();
     const formGroup = this.fb.group({});
 
     _.forOwn(dataItem.data, (value, key) => {
-      if (_.isFunction(value) || _.isArray(value) || (_.isObject(value) && !_.isDate(value)) || _.includes(exclusionPropList, key)) {
+      if (_.isEmpty(dataItem.metadata.fieldProps[key])) {
         return true;
       }
       const formControl = new FormControl(value, []);
