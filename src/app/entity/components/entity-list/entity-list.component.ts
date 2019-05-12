@@ -7,11 +7,11 @@ import {DataItem} from '../../../forms/models/data-item';
 import {FormsService} from '../../../forms/services/forms.service';
 
 @Component({
-  selector: 'app-entities-container',
-  templateUrl: './entities-container.component.html'
+  selector: 'app-entity-list',
+  templateUrl: './entity-list.component.html'
 })
 
-export class EntitiesContainerComponent implements OnInit, OnDestroy {
+export class EntityListComponent implements OnInit, OnDestroy {
 
   private subs: Array<Subscription> = new Array<Subscription>();
   public vm: Array<DataItem<Entity>> = new Array<DataItem<Entity>>();

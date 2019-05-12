@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {SharedModule} from '../forms/shared.module';
-import {EntitiesContainerComponent} from './components/entities-container/entities-container.component';
+import {EntityListComponent} from './components/entity-list/entity-list.component';
 import {EntityComponent} from './components/entity/entity.component';
 import {StoreModule} from '@ngrx/store';
 import {entityReducer} from './entity.reducer';
@@ -8,7 +8,7 @@ import {EntitySliceName} from './entity.slice.name';
 
 @NgModule({
   declarations: [
-    EntitiesContainerComponent,
+    EntityListComponent,
     EntityComponent,
   ],
   imports: [

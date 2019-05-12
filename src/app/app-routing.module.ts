@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {EntitiesContainerComponent} from './entity/components/entities-container/entities-container.component';
+import {EntityListComponent} from './entity/components/entity-list/entity-list.component';
 
 const routes: Routes = [
-  {path: '', component: EntitiesContainerComponent}
+  {path: '', component: EntityListComponent}
 ];
 
 @NgModule({
