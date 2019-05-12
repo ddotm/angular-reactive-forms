@@ -1,9 +1,9 @@
 import * as _ from 'lodash';
-import {FieldProps} from './field-props';
-import {DropdownOption} from './dropdown-option';
+import {FieldProps} from '../../forms/models/field-props';
+import {DropdownOption} from '../../forms/models/dropdown-option';
 import {FormGroup, ValidatorFn, Validators} from '@angular/forms';
-import {IModel} from './imodel';
-import {CustomValidators} from '../services/custom-validators';
+import {IModel} from '../../forms/models/imodel';
+import {CustomValidators} from '../../forms/services/custom-validators';
 
 export enum EntityPropNames {
   entityId = 'entityId',
@@ -46,7 +46,11 @@ export class Entity implements IEntity, IModel {
   }
 
   public getValidators(form: FormGroup): { [key: string]: Array<ValidatorFn> } {
-    const customValidatorFields = [EntityPropNames.startDate, EntityPropNames.endDate, EntityPropNames.contactType];
+    const customValidatorFields = [
+      EntityPropNames.startDate,
+      EntityPropNames.endDate,
+      EntityPropNames.contactType
+    ];
     const allValidators = {
       contactType: [
         Validators.required

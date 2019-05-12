@@ -18,7 +18,7 @@ export class EntityDataService {
         lastName: 'Wright',
         startDate: new Date('2015-01-01'),
         endDate: new Date('2017-01-01'),
-        companyName: 'Paradigm'
+        companyName: 'Microsoft'
       }),
       new Entity({
         entityId: 2,
@@ -27,7 +27,7 @@ export class EntityDataService {
         lastName: 'Hopkins',
         startDate: new Date('2017-01-01'),
         endDate: new Date('2018-01-01'),
-        companyName: 'Coda'
+        companyName: 'Amazon'
       })
     ];
     return of(entities);

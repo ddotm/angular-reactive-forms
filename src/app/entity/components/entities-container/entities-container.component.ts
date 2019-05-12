@@ -1,10 +1,10 @@
 import * as _ from 'lodash';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {EntityDataService} from '../../services/entity-data.service';
-import {DataItem} from '../../models/data-item';
 import {Subscription} from 'rxjs';
-import {FormsService} from '../../services/forms.service';
 import {Entity} from '../../models/entity';
+import {DataItem} from '../../../forms/models/data-item';
+import {FormsService} from '../../../forms/services/forms.service';
 
 @Component({
   selector: 'app-entities-container',

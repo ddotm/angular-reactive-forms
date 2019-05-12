@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Entity, EntityPropNames} from '../../models/entity';
-import {DataItem} from '../../models/data-item';
-import {FormsService} from '../../services/forms.service';
+import {DataItem} from '../../../forms/models/data-item';
+import {FormsService} from '../../../forms/services/forms.service';
 
 @Component({
   selector: 'app-entity',
