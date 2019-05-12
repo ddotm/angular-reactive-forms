@@ -1,20 +1,18 @@
 <form [formGroup]="vm.metadata.form">
   <div class="row">
 
-    <app-input *ngIf="vm.metadata.controlExists(propNames.entityId)"
-               class="col-1"
-               [formGroup]="vm.metadata.form"
-               [controlName]="propNames.entityId"
-               [vm]="vm.metadata.fieldProps[propNames.entityId]"></app-input>
+    <div class="col-1">
+      <span>{{vm.data[propNames.entityId]}}</span>
+    </div>
 
     <app-dropdown *ngIf="vm.metadata.controlExists(propNames.contactType)"
-                  class="col-1"
+                  class="col-2"
                   [formGroup]="vm.metadata.form"
                   [controlName]="propNames.contactType"
                   [vm]="vm.metadata.fieldProps[propNames.contactType]"></app-dropdown>
 
     <app-input *ngIf="vm.metadata.controlExists(propNames.firstName)"
-               class="col-2"
+               class="col-1"
                [formGroup]="vm.metadata.form"
                [controlName]="propNames.firstName"
                [vm]="vm.metadata.fieldProps[propNames.firstName]"></app-input>

@@ -23,10 +23,10 @@ export class EntityComponent implements OnInit {
 
   private onChanges() {
     this.vm.metadata.form.valueChanges
-      // .pipe(takeUntil())
+    // .pipe(takeUntil())
       .subscribe((val) => {
-      this.revalidate();
-    });
+        this.revalidate();
+      });
   }
 
   public revalidate() {
@@ -36,8 +36,7 @@ export class EntityComponent implements OnInit {
   private applyBusinessRules() {
     // Apply any business logic
     if (this.vm.data.firstName === 'Bob') {
-      this.vm.metadata.displayDiagnostics = true;
-      this.vm.metadata.fieldProps.firstName.label = 'Custom label for Bob';
+      this.vm.metadata.fieldProps.firstName.label = 'Custom label';
     }
   }
 }

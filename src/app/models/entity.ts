@@ -69,15 +69,13 @@ export class Entity implements IEntity, IModel {
   public getFieldProps(): { [key: string]: FieldProps } {
     const fieldProps: { [key: string]: FieldProps } = {};
     fieldProps[EntityPropNames.entityId] = new FieldProps({
-      label: 'ID',
-      class: ''
+      label: 'ID'
     });
 
     fieldProps[EntityPropNames.contactType] = new FieldProps({
       label: 'Contact Type',
-      class: '',
       dropdownOptions: [
-        new DropdownOption({value: null, label: 'Select contact type'}),
+        new DropdownOption({value: null, label: ''}),
         new DropdownOption({value: 'I', label: 'Individual'}),
         new DropdownOption({value: 'C', label: 'Company'}),
         new DropdownOption({value: 'V', label: 'Venue'})
@@ -95,18 +93,15 @@ export class Entity implements IEntity, IModel {
     });
 
     fieldProps[EntityPropNames.startDate] = new FieldProps({
-      label: 'Start Date',
-      class: ''
+      label: 'Start Date'
     });
 
     fieldProps[EntityPropNames.endDate] = new FieldProps({
-      label: 'End Date',
-      class: ''
+      label: 'End Date'
     });
 
     fieldProps[EntityPropNames.companyName] = new FieldProps({
-      label: 'Company Name',
-      class: ''
+      label: 'Company Name'
     });
 
     return fieldProps;

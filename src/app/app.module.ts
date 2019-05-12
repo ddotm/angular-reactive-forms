@@ -6,7 +6,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {EntitiesContainerComponent} from './components/entities-container/entities-container.component';
-import {EntityComponent} from './components/person/entity.component';
+import {EntityComponent} from './components/entity/entity.component';
 import {FormSummaryUtilityComponent} from './components/form-summary-utility/form-summary-utility.component';
 import {DropdownComponent} from './components/form-controls/dropdown/dropdown.component';
 import {InputComponent} from './components/form-controls/input/input.component';
@@ -16,6 +16,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import {InputTextModule} from 'primeng/inputtext';
 import {CalendarModule} from 'primeng/calendar';
 import {FieldErrorsComponent} from './components/form-controls/field-errors/field-errors.component';
+import {StoreModule} from '@ngrx/store';
 
 const InputComponents = [
   DropdownComponent,
@@ -43,7 +44,8 @@ const PrimeNgModules = [
     ...PrimeNgModules,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({})
   ],
   providers: [],
   bootstrap: [AppComponent]
