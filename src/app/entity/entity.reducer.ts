@@ -5,13 +5,14 @@ export function entityReducer(state: EntitySlice, action: EntityActions): Entity
 
   console.log(state);
   console.log(action.payload);
+
   switch (action.type) {
     case EntityActionTypes.SelectEntity:
       return {
         ...state,
         selectedEntity: action.payload
       };
-      default:
-        return state;
+    default:
+      return state;
   }
 }

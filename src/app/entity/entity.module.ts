@@ -4,6 +4,7 @@ import {EntitiesContainerComponent} from './components/entities-container/entiti
 import {EntityComponent} from './components/entity/entity.component';
 import {StoreModule} from '@ngrx/store';
 import {entityReducer} from './entity.reducer';
+import {EntitySliceName} from './entity.slice.name';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import {entityReducer} from './entity.reducer';
   ],
   imports: [
     SharedModule,
-    StoreModule.forFeature('entity', entityReducer)
+    StoreModule.forFeature(EntitySliceName, entityReducer)
   ],
   providers: [],
 })

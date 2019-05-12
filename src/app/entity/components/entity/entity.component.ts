@@ -1,10 +1,12 @@
+import * as _ from 'lodash';
 import {Component, Input, OnInit} from '@angular/core';
 import {Entity, EntityPropNames} from '../../models/entity';
 import {DataItem} from '../../../forms/models/data-item';
 import {FormsService} from '../../../forms/services/forms.service';
-import {Store} from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 import {EntitySlice} from '../../entity.slice';
 import {SelectEntityAction} from '../../entity.actions';
+import {EntitySliceName} from '../../entity.slice.name';
 
 @Component({
   selector: 'app-entity',
@@ -22,7 +24,13 @@ export class EntityComponent implements OnInit {
 
   ngOnInit() {
     this.applyBusinessRules();
-
+    this.store.pipe(select(EntitySliceName)).subscribe((entitySlice: EntitySlice) => {
+      if (_.isEmpty(entitySlice) || _.isEmpty(entitySlice.selectedEntity)) {
+        this.selected = false;
+        return;
+      }
+      this.selected = entitySlice.selectedEntity.entityId === this.vm.data.entityId;
+    });
     // this.onChanges();
   }
 
