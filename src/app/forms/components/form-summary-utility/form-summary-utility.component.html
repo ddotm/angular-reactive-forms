@@ -4,20 +4,30 @@
       <h5 class="card-title">Form state</h5>
       <h6>Form properties</h6>
       <ul class="list-inline mb-2">
-        <li class="list-inline-item"><b>status:</b> {{form.status}}</li>
-        <li class="list-inline-item"><b>valid:</b> {{form.valid}}</li>
-        <li class="list-inline-item"><b>invalid:</b> {{form.invalid}}</li>
-        <li class="list-inline-item"><b>pristine:</b> {{form.pristine}}</li>
-        <li class="list-inline-item"><b>dirty:</b> {{form.dirty}}</li>
-        <li class="list-inline-item"><b>touched:</b> {{form.touched}}</li>
-        <li class="list-inline-item"><b>untouched:</b> {{form.untouched}}</li>
-        <li class="list-inline-item"><b>enabled:</b> {{form.enabled}}</li>
-        <li class="list-inline-item"><b>disabled:</b> {{form.disabled}}</li>
-        <li><b>errors:</b> {{form.errors | json}}</li>
+        <li class="list-inline-item"><b>status:</b> {{form?.status}}</li>
+        <li class="list-inline-item"><b>valid:</b> {{form?.valid}}</li>
+        <li class="list-inline-item"><b>invalid:</b> {{form?.invalid}}</li>
+        <li class="list-inline-item"><b>pristine:</b> {{form?.pristine}}</li>
+        <li class="list-inline-item"><b>dirty:</b> {{form?.dirty}}</li>
+        <li class="list-inline-item"><b>touched:</b> {{form?.touched}}</li>
+        <li class="list-inline-item"><b>untouched:</b> {{form?.untouched}}</li>
+        <li class="list-inline-item"><b>enabled:</b> {{form?.enabled}}</li>
+        <li class="list-inline-item"><b>disabled:</b> {{form?.disabled}}</li>
+        <li><b>errors:</b> {{form?.errors | json}}</li>
       </ul>
-      <h6>Form value</h6>
-      <div>
-        {{form.value | json }}
+      <div class="row">
+        <div class="col-6">
+          <h6>Form value</h6>
+          <div>
+            {{form?.value | json }}
+          </div>
+        </div>
+        <div class="col-6">
+          <h6>Model value</h6>
+          <div>
+            {{model | json }}
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {FormArray, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-form-summary-utility',
@@ -7,8 +7,8 @@ import {FormGroup} from '@angular/forms';
   styleUrls: ['./form-summary-utility.component.scss']
 })
 export class FormSummaryUtilityComponent implements OnInit {
-
-  @Input() public form: FormGroup = null;
+  @Input() public form: FormGroup | FormArray = null;
+  @Input() public model: any = null;
 
   constructor() {
   }
