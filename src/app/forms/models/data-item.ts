@@ -9,14 +9,15 @@ export class DataItem<T extends IModel> {
 
   private formsService: FormsService = null;
 
-  public constructor(formsService: FormsService, data: T) {
+  public constructor(formsService: FormsService, data: T, disabled: boolean = false) {
     this.formsService = formsService;
-    this.init(data);
+    this.init(data, disabled);
   }
 
-  private init(data: T) {
+  private init(data: T, disabled: boolean = false) {
     this.data = _.merge(this.data, data);
     this.metadata.fieldProps = this.data.getFieldProps();
+    this.metadata.disabled = disabled;
     this.metadata.form = this.formsService.createFormGroup(this);
     this.metadata.validators = this.data.getValidators(this.metadata.form);
     this.formsService.setValidators(this.metadata.form, this.metadata.validators);

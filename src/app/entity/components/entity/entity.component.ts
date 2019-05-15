@@ -50,7 +50,7 @@ export class EntityComponent implements OnInit {
     // Apply any business logic
     if (this.vm.data.firstName === 'Bob') {
       this.vm.metadata.fieldProps.firstName.label = 'Custom label';
-      // this.vm.metadata.displayDiagnostics = true;
+      this.vm.metadata.displayDiagnostics = true;
     }
   }
 

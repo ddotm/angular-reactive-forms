@@ -1,26 +1,49 @@
 import * as _ from 'lodash';
-import {DropdownOption} from './dropdown-option';
 
 interface ICommonFieldProps {
   label?: string;
   class?: string;
   revalidate?: boolean;
+  mapper?(): any | null;
 }
 
 interface IDropdownFieldProps extends ICommonFieldProps {
-  dropdownOptions: Array<DropdownOption>;
+  dropdownOptions: Array<any>;
 }
 
-export class FieldProps implements ICommonFieldProps, IDropdownFieldProps {
+interface IAutocompleteProps extends ICommonFieldProps {
+  filteredList: Array<any>;
+  noDataMessage: string;
+}
+
+interface IMultiselectProps extends ICommonFieldProps {
+  multiselectList: Array<any>;
+}
+
+export class FieldProps implements ICommonFieldProps,
+  IDropdownFieldProps,
+  IAutocompleteProps,
+  IMultiselectProps {
   // Common properties
   label: string = null;
   class: string = null;
   revalidate: boolean = true;
+  mapper = null;
 
   // Dropdown properties
-  dropdownOptions: Array<DropdownOption> = null;
+  dropdownOptions: Array<any> = null;
 
-  public constructor(data?: ICommonFieldProps | IDropdownFieldProps) {
+  // Autocomplete properties for Kendo
+  filteredList: Array<any> = null;
+  noDataMessage: string = null;
+
+  // Multiselect properties
+  multiselectList: Array<any> = null;
+
+  public constructor(data?: ICommonFieldProps |
+    IDropdownFieldProps |
+    IAutocompleteProps |
+    IMultiselectProps) {
     this.init(data);
   }
 
