@@ -2,8 +2,8 @@ import {Action} from '@ngrx/store';
 import {Entity} from './models/entity';
 
 export enum EntityActionTypes {
-  SelectEntity = 'SELECT_ENTITY',
-  UpdateEntity = 'UPDATE_ENTITY'
+  SelectEntity = '[ENTITY] Select',
+  UpdateEntity = '[ENTITY] Update'
 }
 
 export class SelectEntityAction implements Action {
