@@ -1,5 +1,11 @@
-import {Entity} from './models/entity';
+import { Entity } from './models/entity';
 
-export class EntitySlice {
-  public selectedEntity: Entity = null;
+export interface IEntitySlice {
+  selectedEntity: Entity;
+  entities: Array<Entity>;
+}
+
+export class EntitySlice implements IEntitySlice {
+  selectedEntity: Entity = null;
+  entities: Array<Entity> = new Array<Entity>();
 }
