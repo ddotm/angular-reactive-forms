@@ -1,10 +1,13 @@
 import * as _ from 'lodash';
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {EntityDataService} from '../../services/entity-data.service';
-import {Subscription} from 'rxjs';
-import {Entity} from '../../models/entity';
-import {DataItem} from '../../../forms/models/data-item';
-import {FormsService} from '../../../forms/services/forms.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { EntityDataService } from '../../services/entity-data.service';
+import { Subscription } from 'rxjs';
+import { Entity } from '../../models/entity';
+import { DataItem } from '../../../forms/models/data-item';
+import { FormsService } from '../../../forms/services/forms.service';
+import { SetEntitiesAction } from '../../entity.actions';
+import { Store } from '@ngrx/store';
+import { EntitySlice } from '../../entity.slice';
 
 @Component({
   selector: 'app-entity-list',
@@ -17,13 +20,15 @@ export class EntityListComponent implements OnInit, OnDestroy {
   public vm: Array<DataItem<Entity>> = new Array<DataItem<Entity>>();
 
   constructor(private dataService: EntityDataService,
-              public formsService: FormsService) {
+              public formsService: FormsService,
+              private store: Store<EntitySlice>) {
   }
 
   ngOnInit() {
     const sub = this.dataService.get()
       .subscribe({
         next: (value: Array<Entity>) => {
+          this.store.dispatch(new SetEntitiesAction(value));
           _.forEach(value, (person: Entity) => {
             const dataItem = this.createDataItem(person);
             this.vm.push(dataItem);
