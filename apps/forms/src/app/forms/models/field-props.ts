@@ -4,6 +4,7 @@ interface ICommonFieldProps {
   label?: string;
   class?: string;
   revalidate?: boolean;
+  visible?: boolean;
   mapper?(): any | null;
 }
 
@@ -28,6 +29,7 @@ export class FieldProps implements ICommonFieldProps,
   label: string = null;
   class: string = null;
   revalidate: boolean = true;
+  visible: boolean = true;
   mapper = null;
 
   // Dropdown properties

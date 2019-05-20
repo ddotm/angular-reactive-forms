@@ -7,6 +7,7 @@ export class ModelMetadata {
   public validators: { [key: string]: Array<ValidatorFn> } | {} = {};
   public fieldProps: { [key: string]: FieldProps } = null;
   public disabled: boolean = false;
+  public visible: boolean = true;
   public displayDiagnostics: boolean = false;
 
   public controlExists(controlName: string): boolean {
