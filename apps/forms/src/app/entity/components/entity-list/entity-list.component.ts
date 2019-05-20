@@ -29,8 +29,8 @@ export class EntityListComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (value: Array<Entity>) => {
           this.store.dispatch(new SetEntitiesAction(value));
-          _.forEach(value, (person: Entity) => {
-            const dataItem = this.createDataItem(person);
+          _.forEach(value, (entity: Entity) => {
+            const dataItem = this.createDataItem(entity);
             this.vm.push(dataItem);
           });
           console.log(this.vm);
@@ -39,17 +39,17 @@ export class EntityListComponent implements OnInit, OnDestroy {
     this.subs.push(sub);
   }
 
-  private createDataItem(person: Entity): DataItem<Entity> {
+  private createDataItem(entity: Entity): DataItem<Entity> {
     // Assign specific type to the data property of the data item container
-    const dataItem = new DataItem<Entity>(this.formsService, new Entity(person));
+    const dataItem = new DataItem<Entity>(new Entity(entity));
     return dataItem;
   }
 
   public save() {
-    const persons: Array<Entity> = _.map(this.vm, (dataItem: DataItem<Entity>) => {
+    const entities: Array<Entity> = _.map(this.vm, (dataItem: DataItem<Entity>) => {
       return dataItem.data;
     });
-    this.dataService.save(persons);
+    this.dataService.save(entities);
   }
 
   public addItem(): void {
