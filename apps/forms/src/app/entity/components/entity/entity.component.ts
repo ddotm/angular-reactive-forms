@@ -4,7 +4,7 @@ import { Entity, EntityPropNames } from '../../models/entity';
 import { DataItem } from '../../../forms/models/data-item';
 import { FormsService } from '../../../forms/services/forms.service';
 import { select, Store } from '@ngrx/store';
-import { EntitySlice } from '../../entity.slice';
+import { IEntitySlice } from '../../entity.slice';
 import { SelectEntityAction } from '../../entity.actions';
 import { EntitySliceName } from '../../entity.slice.name';
 
@@ -19,13 +19,13 @@ export class EntityComponent implements OnInit {
   public selected: boolean = false;
 
   constructor(private formsService: FormsService,
-              private store: Store<EntitySlice>) {
+              private store: Store<IEntitySlice>) {
   }
 
   ngOnInit() {
     this.applyBusinessRules();
     this.store.pipe(select(EntitySliceName))
-      .subscribe((entitySlice: EntitySlice) => {
+      .subscribe((entitySlice: IEntitySlice) => {
         if (_.isEmpty(entitySlice) || _.isEmpty(entitySlice.selectedEntity)) {
           this.selected = false;
           return;
