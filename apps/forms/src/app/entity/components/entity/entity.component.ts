@@ -4,9 +4,10 @@ import { Entity, EntityPropNames } from '../../models/entity';
 import { DataItem } from '../../../forms/models/data-item';
 import { FormsService } from '../../../forms/services/forms.service';
 import { select, Store } from '@ngrx/store';
-import { EntitySlice } from '../../entity.slice';
+import { IEntitySlice } from '../../entity.slice';
 import { SelectEntityAction } from '../../entity.actions';
 import { EntitySliceName } from '../../entity.slice.name';
+import { getSelectedEntityId } from '../../entity.selectors';
 
 @Component({
   selector: 'app-entity',
@@ -19,20 +20,15 @@ export class EntityComponent implements OnInit {
   public selected: boolean = false;
 
   constructor(private formsService: FormsService,
-              private store: Store<EntitySlice>) {
+              private store: Store<IEntitySlice>) {
   }
 
   ngOnInit() {
     this.applyBusinessRules();
-    this.store.pipe(select(EntitySliceName))
-      .subscribe((entitySlice: EntitySlice) => {
-        if (_.isEmpty(entitySlice) || _.isEmpty(entitySlice.selectedEntity)) {
-          this.selected = false;
-          return;
-        }
-        this.selected = entitySlice.selectedEntity.entityId === this.vm.data.entityId;
+    this.store.pipe(select(getSelectedEntityId))
+      .subscribe((selectedEntityId: number) => {
+        this.selected = selectedEntityId === this.vm.data.entityId;
       });
-    // this.onChanges();
   }
 
   private onChanges() {
@@ -57,6 +53,8 @@ export class EntityComponent implements OnInit {
 
   public selectEntity(): void {
     this.selected = !this.selected;
-    this.store.dispatch(new SelectEntityAction(this.selected ? this.vm.data : null));
+    if (this.selected === true) {
+      this.store.dispatch(new SelectEntityAction(this.vm.data));
+    }
   }
 }

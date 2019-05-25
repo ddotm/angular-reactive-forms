@@ -7,7 +7,7 @@ import { DataItem } from '../../../forms/models/data-item';
 import { FormsService } from '../../../forms/services/forms.service';
 import { SetEntitiesAction } from '../../entity.actions';
 import { Store } from '@ngrx/store';
-import { EntitySlice } from '../../entity.slice';
+import { IEntitySlice } from '../../entity.slice';
 
 @Component({
   selector: 'app-entity-list',
@@ -21,7 +21,7 @@ export class EntityListComponent implements OnInit, OnDestroy {
 
   constructor(private dataService: EntityDataService,
               public formsService: FormsService,
-              private store: Store<EntitySlice>) {
+              private store: Store<IEntitySlice>) {
   }
 
   ngOnInit() {

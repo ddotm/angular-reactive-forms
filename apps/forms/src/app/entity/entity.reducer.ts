@@ -1,7 +1,8 @@
-import { IEntitySlice } from './entity.slice';
+import { IEntitySlice, InitialEntitySlice } from './entity.slice';
 import { EntityActions, EntityActionTypes } from './entity.actions';
+import { Entity } from './models/entity';
 
-export function entityReducer(state: IEntitySlice, action: EntityActions): IEntitySlice {
+export function entityReducer(state: IEntitySlice = InitialEntitySlice, action: EntityActions): IEntitySlice {
 
   console.log(state);
   console.log(action.payload);
@@ -10,12 +11,12 @@ export function entityReducer(state: IEntitySlice, action: EntityActions): IEnti
     case EntityActionTypes.SelectEntity:
       return {
         ...state,
-        selectedEntity: action.payload.selectedEntity
+        selectedEntity: <Entity> action.payload
       };
     case EntityActionTypes.SetEntities:
       return {
         ...state,
-        entities: action.payload.entities
+        entities: <Array<Entity>> action.payload
       };
     default:
       return state;
