@@ -7,6 +7,7 @@ import { select, Store } from '@ngrx/store';
 import { IEntitySlice } from '../../entity.slice';
 import { SelectEntityAction } from '../../entity.actions';
 import { EntitySliceName } from '../../entity.slice.name';
+import { getSelectedEntityId } from '../../entity.selectors';
 
 @Component({
   selector: 'app-entity',
@@ -24,13 +25,9 @@ export class EntityComponent implements OnInit {
 
   ngOnInit() {
     this.applyBusinessRules();
-    this.store.pipe(select(EntitySliceName))
-      .subscribe((entitySlice: IEntitySlice) => {
-        if (_.isEmpty(entitySlice) || _.isEmpty(entitySlice.selectedEntity)) {
-          this.selected = false;
-          return;
-        }
-        this.selected = entitySlice.selectedEntity.entityId === this.vm.data.entityId;
+    this.store.pipe(select(getSelectedEntityId))
+      .subscribe((selectedEntityId: number) => {
+        this.selected = selectedEntityId === this.vm.data.entityId;
       });
   }
 
