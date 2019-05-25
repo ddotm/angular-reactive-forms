@@ -32,7 +32,6 @@ export class EntityComponent implements OnInit {
         }
         this.selected = entitySlice.selectedEntity.entityId === this.vm.data.entityId;
       });
-    // this.onChanges();
   }
 
   private onChanges() {
@@ -57,6 +56,8 @@ export class EntityComponent implements OnInit {
 
   public selectEntity(): void {
     this.selected = !this.selected;
-    this.store.dispatch(new SelectEntityAction(this.selected ? this.vm.data : null));
+    if (this.selected === true) {
+      this.store.dispatch(new SelectEntityAction(this.vm.data));
+    }
   }
 }

@@ -1,6 +1,5 @@
 import { Action } from '@ngrx/store';
 import { Entity } from './models/entity';
-import { EntitySlice, IEntitySlice } from './entity.slice';
 
 export enum EntityActionTypes {
   SelectEntity = '[ENTITY] Select',
@@ -9,31 +8,26 @@ export enum EntityActionTypes {
 }
 
 export class SelectEntityAction implements Action {
-  type: string = EntityActionTypes.SelectEntity;
-  payload: IEntitySlice = new EntitySlice();
+  readonly type: string = EntityActionTypes.SelectEntity;
 
-  constructor(public entity: Entity) {
-    this.payload.selectedEntity = entity;
+  constructor(public payload: Entity) {
   }
 }
 
 export class UpdateEntityAction implements Action {
-  type: string = EntityActionTypes.UpdateEntity;
-  payload: IEntitySlice = new EntitySlice();
+  readonly type: string = EntityActionTypes.UpdateEntity;
 
-  constructor(public entity: Entity) {
+  constructor(public payload: Entity) {
   }
 }
 
 export class SetEntitiesAction implements Action {
-  type: string = EntityActionTypes.SetEntities;
-  payload: IEntitySlice = new EntitySlice();
+  readonly type: string = EntityActionTypes.SetEntities;
 
-  constructor(public entities: Array<Entity>) {
-    this.payload.entities = entities;
+  constructor(public payload: Array<Entity>) {
   }
 }
 
-export type EntityActions = SelectEntityAction |
-  UpdateEntityAction |
-  SetEntitiesAction;
+export type EntityActions = SelectEntityAction
+  | UpdateEntityAction
+  | SetEntitiesAction;
