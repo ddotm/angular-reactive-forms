@@ -1,6 +1,6 @@
 import { IEntitySlice, InitialEntitySlice } from './entity.slice';
 import { EntityActions, EntityActionTypes } from './entity.actions';
-import { Entity } from './models/entity';
+import { Entity } from '../models/entity';
 
 export function entityReducer(state: IEntitySlice = InitialEntitySlice, action: EntityActions): IEntitySlice {
 

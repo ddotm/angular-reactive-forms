@@ -4,10 +4,9 @@ import { Entity, EntityPropNames } from '../../models/entity';
 import { DataItem } from '../../../forms/models/data-item';
 import { FormsService } from '../../../forms/services/forms.service';
 import { select, Store } from '@ngrx/store';
-import { IEntitySlice } from '../../entity.slice';
-import { SelectEntityAction } from '../../entity.actions';
-import { EntitySliceName } from '../../entity.slice.name';
-import { getSelectedEntityId } from '../../entity.selectors';
+import { IEntitySlice } from '../../state/entity.slice';
+import { SelectEntityAction } from '../../state/entity.actions';
+import { getSelectedEntityId } from '../../state/entity.selectors';
 
 @Component({
   selector: 'app-entity',

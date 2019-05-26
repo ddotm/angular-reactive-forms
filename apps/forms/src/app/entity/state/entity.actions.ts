@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Entity } from './models/entity';
+import { Entity } from '../models/entity';
 
 export enum EntityActionTypes {
   SelectEntity = '[ENTITY] Select',

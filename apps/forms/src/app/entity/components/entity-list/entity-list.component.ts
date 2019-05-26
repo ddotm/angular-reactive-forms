@@ -1,12 +1,12 @@
 import * as _ from 'lodash';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { EntityDataService } from '../../services/entity-data.service';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { EntityDataService } from '../../services/entity-data.service';
 import { Entity } from '../../models/entity';
 import { DataItem } from '../../../forms/models/data-item';
-import { SetEntitiesAction } from '../../entity.actions';
-import { Store } from '@ngrx/store';
-import { IEntitySlice } from '../../entity.slice';
+import { SetEntitiesAction } from '../../state/entity.actions';
+import { IEntitySlice } from '../../state/entity.slice';
 
 @Component({
   selector: 'app-entity-list',
