@@ -5,7 +5,7 @@ import {Entity, IEntity} from '../models/entity';
 @Injectable({
   providedIn: 'root'
 })
-export class EntityDataService {
+export class EntityService {
   constructor() {
   }
 
@@ -31,6 +31,12 @@ export class EntityDataService {
       })
     ];
     return of(entities);
+
+    // return this.http.get<Array<Entity>>(this.entitiesUrl)
+    //   .pipe(
+    //     tap(data => console.log(JSON.stringify(data))),
+    //     catchError(this.handleError)
+    //   );
   }
 
   public save(data: Array<IEntity>): void {

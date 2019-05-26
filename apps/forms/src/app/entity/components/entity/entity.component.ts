@@ -1,9 +1,9 @@
-import * as _ from 'lodash';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { takeWhile } from 'rxjs/operators';
 import { Entity, EntityPropNames } from '../../models/entity';
 import { DataItem } from '../../../forms/models/data-item';
 import { FormsService } from '../../../forms/services/forms.service';
-import { select, Store } from '@ngrx/store';
 import { IEntitySlice } from '../../state/entity.slice';
 import { SelectEntityAction } from '../../state/entity.actions';
 import { getSelectedEntityId } from '../../state/entity.selectors';
@@ -12,7 +12,8 @@ import { getSelectedEntityId } from '../../state/entity.selectors';
   selector: 'app-entity',
   templateUrl: './entity.component.html'
 })
-export class EntityComponent implements OnInit {
+export class EntityComponent implements OnInit, OnDestroy {
+  componentActive = true;
 
   @Input() public vm: DataItem<Entity> = null;
   public propNames = EntityPropNames;
@@ -24,7 +25,9 @@ export class EntityComponent implements OnInit {
 
   ngOnInit() {
     this.applyBusinessRules();
-    this.store.pipe(select(getSelectedEntityId))
+    this.store.pipe(
+      select(getSelectedEntityId),
+      takeWhile(() => this.componentActive))
       .subscribe((selectedEntityId: number) => {
         this.selected = selectedEntityId === this.vm.data.entityId;
       });
@@ -32,7 +35,9 @@ export class EntityComponent implements OnInit {
 
   private onChanges() {
     this.vm.metadata.form.valueChanges
-      .pipe()
+      .pipe(
+        takeWhile(() => this.componentActive)
+      )
       .subscribe((val) => {
         this.revalidate();
       });
@@ -46,7 +51,7 @@ export class EntityComponent implements OnInit {
     // Apply any business logic
     if (this.vm.data.firstName === 'Bob') {
       this.vm.metadata.fieldProps.firstName.label = 'Custom label';
-      this.vm.metadata.displayDiagnostics = true;
+      // this.vm.metadata.displayDiagnostics = true;
     }
   }
 
@@ -55,5 +60,9 @@ export class EntityComponent implements OnInit {
     if (this.selected === true) {
       this.store.dispatch(new SelectEntityAction(this.vm.data));
     }
+  }
+
+  ngOnDestroy(): void {
+    this.componentActive = false;
   }
 }

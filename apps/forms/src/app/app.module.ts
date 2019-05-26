@@ -5,8 +5,6 @@ import { SharedModule } from './forms/shared.module';
 import { EntityModule } from './entity/entity.module';
 import { AppComponent } from './app.component';
 import { NxModule } from '@nrwl/nx';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -16,8 +14,7 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     SharedModule,
     EntityModule,
-    NxModule.forRoot(),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    NxModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,3 +12,13 @@ export const getSelectedEntityId =
       return !isNull(entityState.selectedEntity) ? entityState.selectedEntity.entityId : null;
     }
   );
+
+export const getEntities = createSelector(
+  getEntityState,
+  state => state.entities
+);
+
+export const getError = createSelector(
+  getEntityState,
+  state => state.error
+);

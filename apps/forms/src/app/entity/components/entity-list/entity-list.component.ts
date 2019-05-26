@@ -1,12 +1,13 @@
 import * as _ from 'lodash';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
-import { EntityDataService } from '../../services/entity-data.service';
+import { select, Store } from '@ngrx/store';
+import { takeWhile } from 'rxjs/operators';
+import { EntityService } from '../../services/entity.service';
 import { Entity } from '../../models/entity';
 import { DataItem } from '../../../forms/models/data-item';
-import { SetEntitiesAction } from '../../state/entity.actions';
+import { LoadEntities } from '../../state/entity.actions';
 import { IEntitySlice } from '../../state/entity.slice';
+import { getEntities } from '../../state/entity.selectors';
 
 @Component({
   selector: 'app-entity-list',
@@ -15,26 +16,24 @@ import { IEntitySlice } from '../../state/entity.slice';
 
 export class EntityListComponent implements OnInit, OnDestroy {
 
-  private subs: Array<Subscription> = new Array<Subscription>();
+  componentActive = true;
   public vm: Array<DataItem<Entity>> = new Array<DataItem<Entity>>();
 
-  constructor(private dataService: EntityDataService,
+  constructor(private entityService: EntityService,
               private store: Store<IEntitySlice>) {
   }
 
   ngOnInit() {
-    const sub = this.dataService.get()
-      .subscribe({
-        next: (value: Array<Entity>) => {
-          this.store.dispatch(new SetEntitiesAction(value));
-          _.forEach(value, (entity: Entity) => {
-            const dataItem = this.createDataItem(entity);
-            this.vm.push(dataItem);
-          });
-          console.log(this.vm);
-        }
+    this.store.dispatch(new LoadEntities());
+    this.store.pipe(
+      select(getEntities),
+      takeWhile(() => this.componentActive))
+      .subscribe((entities: Array<Entity>) => {
+        _.forEach(entities, (entity: Entity) => {
+          const dataItem = this.createDataItem(entity);
+          this.vm.push(dataItem);
+        });
       });
-    this.subs.push(sub);
   }
 
   private createDataItem(entity: Entity): DataItem<Entity> {
@@ -47,7 +46,7 @@ export class EntityListComponent implements OnInit, OnDestroy {
     const entities: Array<Entity> = _.map(this.vm, (dataItem: DataItem<Entity>) => {
       return dataItem.data;
     });
-    this.dataService.save(entities);
+    this.entityService.save(entities);
   }
 
   public addItem(): void {
@@ -56,8 +55,6 @@ export class EntityListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    _.forEach(this.subs, (sub: Subscription) => {
-      sub.unsubscribe();
-    });
+    this.componentActive = false;
   }
 }

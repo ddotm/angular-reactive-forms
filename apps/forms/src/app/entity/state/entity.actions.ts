@@ -4,7 +4,10 @@ import { Entity } from '../models/entity';
 export enum EntityActionTypes {
   SelectEntity = '[ENTITY] Select',
   UpdateEntity = '[ENTITY] Update',
-  SetEntities = '[ENTITY] Set Entities'
+  SetEntities = '[ENTITY] Set Entities',
+  LoadEntities = '[ENTITY] Load Entities',
+  LoadEntitiesSuccess = '[ENTITY] Load Success',
+  LoadEntitiesFail = '[ENTITY] Load Fail'
 }
 
 export class SelectEntityAction implements Action {
@@ -28,6 +31,26 @@ export class SetEntitiesAction implements Action {
   }
 }
 
+export class LoadEntities implements Action {
+  readonly type = EntityActionTypes.LoadEntities;
+  payload: null
+}
+
+export class LoadEntitiesSuccess implements Action {
+  readonly type = EntityActionTypes.LoadEntitiesSuccess;
+
+  constructor(public payload: Array<Entity>) { }
+}
+
+export class LoadEntitiesFail implements Action {
+  readonly type = EntityActionTypes.LoadEntitiesFail;
+
+  constructor(public payload: string) { }
+}
+
 export type EntityActions = SelectEntityAction
   | UpdateEntityAction
-  | SetEntitiesAction;
+  | SetEntitiesAction
+  | LoadEntities
+  | LoadEntitiesSuccess
+  | LoadEntitiesFail;
