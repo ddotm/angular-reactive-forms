@@ -4,7 +4,6 @@ import { EntityDataService } from '../../services/entity-data.service';
 import { Subscription } from 'rxjs';
 import { Entity } from '../../models/entity';
 import { DataItem } from '../../../forms/models/data-item';
-import { FormsService } from '../../../forms/services/forms.service';
 import { SetEntitiesAction } from '../../entity.actions';
 import { Store } from '@ngrx/store';
 import { IEntitySlice } from '../../entity.slice';
@@ -20,7 +19,6 @@ export class EntityListComponent implements OnInit, OnDestroy {
   public vm: Array<DataItem<Entity>> = new Array<DataItem<Entity>>();
 
   constructor(private dataService: EntityDataService,
-              public formsService: FormsService,
               private store: Store<IEntitySlice>) {
   }
 
