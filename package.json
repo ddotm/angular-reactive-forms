@@ -62,6 +62,7 @@
     "@types/jasmine": "2.8.16",
     "@types/jasminewd2": "2.0.6",
     "@types/node": "8.10.48",
+    "angular-in-memory-web-api": "0.8.0",
     "codelyzer": "4.5.0",
     "jasmine-core": "2.99.1",
     "jasmine-marbles": "0.4.0",

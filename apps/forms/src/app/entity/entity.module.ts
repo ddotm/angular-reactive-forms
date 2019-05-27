@@ -8,6 +8,11 @@ import { entityReducer } from './state/entity.reducer';
 import { EntityEffects } from './state/entity.effects';
 import { EntitySliceName } from './state';
 
+// Imports for loading & configuring the in-memory web api
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { EntityData } from './entity.data';
+
 @NgModule({
   declarations: [
     EntityListComponent,
@@ -18,7 +23,9 @@ import { EntitySliceName } from './state';
     StoreModule.forFeature(EntitySliceName, entityReducer),
     EffectsModule.forFeature(
       [EntityEffects]
-    )
+    ),
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(EntityData)
   ],
   providers: []
 })
