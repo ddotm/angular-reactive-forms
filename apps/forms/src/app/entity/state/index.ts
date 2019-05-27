@@ -1,6 +1,21 @@
 import { isNull } from 'lodash';
+import { Entity } from '../models/entity';
+import { IAppState } from '../../app.state';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { EntitySliceName, IEntitySlice } from './index';
+
+export const EntitySliceName: string = 'entity';
+
+export interface IEntitySlice extends IAppState {
+  selectedEntity: Entity;
+  entities: Array<Entity>;
+  error: string;
+}
+
+export const InitialEntitySlice: IEntitySlice = {
+  selectedEntity: null,
+  entities: new Array<Entity>(),
+  error: ''
+};
 
 const getEntityState = createFeatureSelector<IEntitySlice>(EntitySliceName);
 

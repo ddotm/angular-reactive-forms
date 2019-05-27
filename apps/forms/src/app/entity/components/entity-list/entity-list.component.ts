@@ -6,8 +6,8 @@ import { EntityService } from '../../services/entity.service';
 import { Entity } from '../../models/entity';
 import { DataItem } from '../../../forms/models/data-item';
 import { LoadEntities } from '../../state/entity.actions';
-import { IEntitySlice } from '../../state/entity.slice';
 import { getEntities } from '../../state/entity.selectors';
+import { IEntitySlice } from '../../state';
 
 @Component({
   selector: 'app-entity-list',

@@ -1,4 +1,4 @@
-import { IEntitySlice, InitialEntitySlice } from './entity.slice';
+import { IEntitySlice, InitialEntitySlice } from './index';
 import { EntityActions, EntityActionTypes } from './entity.actions';
 import { Entity } from '../models/entity';
 

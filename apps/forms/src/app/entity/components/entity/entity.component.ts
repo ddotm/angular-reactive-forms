@@ -4,9 +4,9 @@ import { takeWhile } from 'rxjs/operators';
 import { Entity, EntityPropNames } from '../../models/entity';
 import { DataItem } from '../../../forms/models/data-item';
 import { FormsService } from '../../../forms/services/forms.service';
-import { IEntitySlice } from '../../state/entity.slice';
 import { SelectEntityAction } from '../../state/entity.actions';
 import { getSelectedEntityId } from '../../state/entity.selectors';
+import { IEntitySlice } from '../../state';
 
 @Component({
   selector: 'app-entity',
