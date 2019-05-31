@@ -1,9 +1,9 @@
 import * as _ from 'lodash';
-import {FieldProps} from '../../forms/models/field-props';
-import {DropdownOption} from '../../forms/models/dropdown-option';
-import {FormGroup, ValidatorFn, Validators} from '@angular/forms';
-import {IModel} from '../../forms/models/imodel';
-import {CustomValidators} from '../../forms/services/custom-validators';
+import { FieldProps } from '../../forms/models/field-props';
+import { DropdownOption } from '../../forms/models/dropdown-option';
+import { FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { IModel } from '../../forms/models/imodel';
+import { CustomValidators } from '../../forms/services/custom-validators';
 
 export enum EntityPropNames {
   entityId = 'entityId',
@@ -16,7 +16,7 @@ export enum EntityPropNames {
 }
 
 export interface IEntity {
-  entityId: number
+  entityId: number;
   contactType: string;
   firstName: string;
   lastName: string;
@@ -45,7 +45,7 @@ export class Entity implements IEntity, IModel {
     return this;
   }
 
-  public getValidators(form: FormGroup): { [key: string]: Array<ValidatorFn> } {
+  public getValidators = (form: FormGroup): { [key: string]: Array<ValidatorFn> } => {
     const customValidatorFields = [
       EntityPropNames.startDate,
       EntityPropNames.endDate,
@@ -68,9 +68,9 @@ export class Entity implements IEntity, IModel {
       ]
     };
     return allValidators;
-  }
+  };
 
-  public getFieldProps(): { [key: string]: FieldProps } {
+  public getFieldProps = (): { [key: string]: FieldProps } => {
     const fieldProps: { [key: string]: FieldProps } = {};
     fieldProps[EntityPropNames.entityId] = new FieldProps({
       label: 'ID'
@@ -79,10 +79,10 @@ export class Entity implements IEntity, IModel {
     fieldProps[EntityPropNames.contactType] = new FieldProps({
       label: 'Contact Type',
       dropdownOptions: [
-        new DropdownOption({value: null, label: ''}),
-        new DropdownOption({value: 'I', label: 'Individual'}),
-        new DropdownOption({value: 'C', label: 'Company'}),
-        new DropdownOption({value: 'V', label: 'Venue'})
+        new DropdownOption({ value: null, label: '' }),
+        new DropdownOption({ value: 'I', label: 'Individual' }),
+        new DropdownOption({ value: 'C', label: 'Company' }),
+        new DropdownOption({ value: 'V', label: 'Venue' })
       ]
     });
 
@@ -109,5 +109,5 @@ export class Entity implements IEntity, IModel {
     });
 
     return fieldProps;
-  }
+  };
 }
