@@ -1,4 +1,4 @@
-import { NxModule } from '@nrwl/nx';
+import { NxModule } from '@nrwl/angular';
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';

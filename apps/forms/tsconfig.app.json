@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/apps/forms",
+    "outDir": "../../dist/out-tsc",
     "types": []
   },
   "exclude": [

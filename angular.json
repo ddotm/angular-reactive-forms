@@ -147,6 +147,6 @@
   },
   "defaultProject": "forms",
   "cli": {
-    "defaultCollection": "@nrwl/schematics"
+    "defaultCollection": "@nrwl/angular"
   }
 }

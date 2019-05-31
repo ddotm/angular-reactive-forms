@@ -2,7 +2,7 @@
   "extends": "tslint:recommended",
   "rulesDirectory": [
     "codelyzer",
-    "node_modules/@nrwl/schematics/src/tslint"
+    "node_modules/@nrwl/workspace/src/tslint"
   ],
   "rules": {
     "array-type": false,
