@@ -14,7 +14,7 @@ export class EntityService {
   constructor(private http: HttpClient) {
   }
 
-  public get(): Observable<Array<Entity>> {
+  public get(id: number): Observable<Array<Entity>> {
     return this.http.get<Array<Entity>>(this.entityUrl)
       .pipe(
         tap((data: Array<Entity>) => console.log(JSON.stringify(data))),

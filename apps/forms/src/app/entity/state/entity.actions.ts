@@ -7,7 +7,8 @@ export enum EntityActionTypes {
   SetEntities = '[ENTITY] Set Entities',
   LoadEntities = '[ENTITY] Load Entities',
   LoadEntitiesSuccess = '[ENTITY] Load Success',
-  LoadEntitiesFail = '[ENTITY] Load Fail'
+  LoadEntitiesFail = '[ENTITY] Load Fail',
+  ClearEntities = '[ENTITY] Clear Entity'
 }
 
 export class SelectEntityAction implements Action {
@@ -33,19 +34,28 @@ export class SetEntitiesAction implements Action {
 
 export class LoadEntities implements Action {
   readonly type = EntityActionTypes.LoadEntities;
-  payload: null
+
+  constructor(public payload: number) {
+  }
 }
 
 export class LoadEntitiesSuccess implements Action {
   readonly type = EntityActionTypes.LoadEntitiesSuccess;
 
-  constructor(public payload: Array<Entity>) { }
+  constructor(public payload: Array<Entity>) {
+  }
 }
 
 export class LoadEntitiesFail implements Action {
   readonly type = EntityActionTypes.LoadEntitiesFail;
 
-  constructor(public payload: string) { }
+  constructor(public payload: string) {
+  }
+}
+
+export class ClearEntitiesSlice implements Action {
+  readonly type = EntityActionTypes.ClearEntities;
+  public payload = null;
 }
 
 export type EntityActions = SelectEntityAction
@@ -53,4 +63,5 @@ export type EntityActions = SelectEntityAction
   | SetEntitiesAction
   | LoadEntities
   | LoadEntitiesSuccess
-  | LoadEntitiesFail;
+  | LoadEntitiesFail
+  | ClearEntitiesSlice;

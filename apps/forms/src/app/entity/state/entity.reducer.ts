@@ -11,17 +11,17 @@ export function entityReducer(state: IEntitySlice = InitialEntitySlice, action: 
     case EntityActionTypes.SelectEntity:
       return {
         ...state,
-        selectedEntity: <Entity> action.payload
+        selectedEntity: action.payload as Entity
       };
     case EntityActionTypes.SetEntities:
       return {
         ...state,
-        entities: <Array<Entity>> action.payload
+        entities: action.payload as Array<Entity>
       };
     case EntityActionTypes.LoadEntitiesSuccess:
       return {
         ...state,
-        entities: <Array<Entity>> action.payload,
+        entities: action.payload as Array<Entity>,
         error: ''
       };
 
@@ -29,8 +29,12 @@ export function entityReducer(state: IEntitySlice = InitialEntitySlice, action: 
       return {
         ...state,
         entities: new Array<Entity>(),
-        error: <string> action.payload
+        error: action.payload as string
       };
+
+    case EntityActionTypes.ClearEntities:
+      return InitialEntitySlice;
+
     default:
       return state;
   }

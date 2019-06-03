@@ -5,9 +5,10 @@ import { takeWhile } from 'rxjs/operators';
 import { EntityService } from '../../services/entity.service';
 import { Entity } from '../../models/entity';
 import { DataItem } from '../../../forms/models/data-item';
-import { LoadEntities } from '../../state/entity.actions';
+import { ClearEntitiesSlice, LoadEntities } from '../../state/entity.actions';
 import { getEntities } from '../../state/entity.selectors';
 import { IEntitySlice } from '../../state';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-entity-list',
@@ -18,21 +19,24 @@ export class EntityListComponent implements OnInit, OnDestroy {
 
   componentActive = true;
   public vm: Array<DataItem<Entity>> = new Array<DataItem<Entity>>();
+  public vm$: Observable<Array<DataItem<Entity>>>;
 
   constructor(private entityService: EntityService,
               private store: Store<IEntitySlice>) {
   }
 
   ngOnInit() {
-    this.store.dispatch(new LoadEntities());
+    this.store.dispatch(new LoadEntities(1));
     this.store.pipe(
       select(getEntities),
       takeWhile(() => this.componentActive))
       .subscribe((entities: Array<Entity>) => {
+        this.vm = new Array<DataItem<Entity>>();
         _.forEach(entities, (entity: Entity) => {
           const dataItem = this.createDataItem(entity);
           this.vm.push(dataItem);
         });
+        this.vm$ = of(this.vm);
       });
   }
 
@@ -52,6 +56,10 @@ export class EntityListComponent implements OnInit, OnDestroy {
   public addItem(): void {
     const dataItem: DataItem<Entity> = this.createDataItem(new Entity());
     this.vm.push(dataItem);
+  }
+
+  public clear(): void {
+    this.store.dispatch(new ClearEntitiesSlice());
   }
 
   ngOnDestroy(): void {

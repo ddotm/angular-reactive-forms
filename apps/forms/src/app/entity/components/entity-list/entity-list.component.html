@@ -1,4 +1,4 @@
-<div *ngFor="let dataItem of vm">
+<div *ngFor="let dataItem of vm$ | async">
   <app-entity [vm]="dataItem"></app-entity>
 </div>
 
@@ -7,3 +7,7 @@
   Add New
 </a>
 
+<a class="btn btn-primary"
+   (click)="clear()">
+  Clear
+</a>

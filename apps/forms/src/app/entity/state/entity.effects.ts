@@ -6,6 +6,7 @@ import { catchError, map, mergeMap } from 'rxjs/operators';
 import * as entityActions from './entity.actions';
 import { EntityService } from '../services/entity.service';
 import { Entity } from '../models/entity';
+import { LoadEntities } from './entity.actions';
 
 @Injectable()
 export class EntityEffects {
@@ -16,8 +17,8 @@ export class EntityEffects {
   @Effect()
   loadEntities$: Observable<Action> = this.actions$.pipe(
     ofType(entityActions.EntityActionTypes.LoadEntities),
-    mergeMap((action) =>
-      this.entityService.get().pipe(
+    mergeMap((action: LoadEntities) =>
+      this.entityService.get(action.payload).pipe(
         map((entities: Array<Entity>) => (new entityActions.LoadEntitiesSuccess(entities))),
         catchError(err => of(new entityActions.LoadEntitiesFail(err)))
       )
