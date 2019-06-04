@@ -4,9 +4,6 @@ import { Entity } from '../models/entity';
 
 export function entityReducer(state: IEntitySlice = InitialEntitySlice, action: EntityActions): IEntitySlice {
 
-  console.log(state);
-  console.log(action);
-
   switch (action.type) {
     case EntityActionTypes.SelectEntity:
       return {
