@@ -1,6 +1,6 @@
 import { isNull } from 'lodash';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { EntitySliceName, IEntitySlice } from './index';
+import { IEntitySlice, EntitySliceName } from './entity.slice';
 
 const getEntityState = createFeatureSelector<IEntitySlice>(EntitySliceName);
 

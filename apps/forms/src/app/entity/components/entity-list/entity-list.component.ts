@@ -2,13 +2,11 @@ import * as _ from 'lodash';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { takeWhile } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 import { EntityService } from '../../services/entity.service';
 import { Entity } from '../../models/entity';
 import { DataItem } from '../../../forms/models/data-item';
-import { ClearEntitiesSlice, LoadEntities } from '../../state/entity.actions';
-import { getEntities } from '../../state/entity.selectors';
-import { IEntitySlice } from '../../state';
-import { Observable, of } from 'rxjs';
+import { ClearEntitiesSlice, LoadEntities, getEntities, IEntitySlice } from '../../state';
 
 @Component({
   selector: 'app-entity-list',

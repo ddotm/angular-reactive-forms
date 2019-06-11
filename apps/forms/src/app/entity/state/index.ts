@@ -1,38 +1,27 @@
-import { isNull } from 'lodash';
-import { Entity } from '../models/entity';
-import { IAppState } from '../../app.state';
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { EntitySliceName, IEntitySlice, InitialEntitySlice } from './entity.slice';
+import { getSelectedEntityId, getEntities, getError } from './entity.selectors';
+import {
+  EntityActionTypes, SelectEntityAction, UpdateEntityAction, SetEntitiesAction, LoadEntities, LoadEntitiesSuccess, LoadEntitiesFail,
+  ClearEntitiesSlice,
+  EntityActions
+} from './entity.actions';
+import { EntityEffects } from './entity.effects';
 
-export const EntitySliceName: string = 'entity';
-
-export interface IEntitySlice extends IAppState {
-  selectedEntity: Entity;
-  entities: Array<Entity>;
-  error: string;
-}
-
-export const InitialEntitySlice: IEntitySlice = {
-  selectedEntity: null,
-  entities: new Array<Entity>(),
-  error: ''
+export {
+  EntitySliceName,
+  IEntitySlice,
+  InitialEntitySlice,
+  EntityActionTypes,
+  SelectEntityAction,
+  UpdateEntityAction,
+  SetEntitiesAction,
+  LoadEntities,
+  LoadEntitiesSuccess,
+  LoadEntitiesFail,
+  ClearEntitiesSlice,
+  EntityActions,
+  EntityEffects,
+  getSelectedEntityId,
+  getEntities,
+  getError
 };
-
-const getEntityState = createFeatureSelector<IEntitySlice>(EntitySliceName);
-
-export const getSelectedEntityId =
-  createSelector(
-    getEntityState,
-    (entityState) => {
-      return !isNull(entityState.selectedEntity) ? entityState.selectedEntity.entityId : null;
-    }
-  );
-
-export const getEntities = createSelector(
-  getEntityState,
-  state => state.entities
-);
-
-export const getError = createSelector(
-  getEntityState,
-  state => state.error
-);
