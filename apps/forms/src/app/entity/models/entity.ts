@@ -1,9 +1,13 @@
 import * as _ from 'lodash';
-import { FieldProps } from '../../forms/models/field-props';
-import { DropdownOption } from '../../forms/models/dropdown-option';
-import { FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { IModel } from '../../forms/models/imodel';
-import { CustomValidators } from '../../forms/services/custom-validators';
+import {FieldProps} from '../../forms/models/field-props';
+import {DropdownOption} from '../../forms/models/dropdown-option';
+import {
+  FormGroup,
+  ValidatorFn,
+  Validators
+} from '@angular/forms';
+import {IModel} from '../../forms/models/imodel';
+import {CustomValidators} from '../../forms/services/custom-validators';
 
 export enum EntityPropNames {
   entityId = 'entityId',
@@ -46,12 +50,7 @@ export class Entity implements IEntity, IModel {
   }
 
   public getValidators = (form: FormGroup): { [key: string]: Array<ValidatorFn> } => {
-    const customValidatorFields = [
-      EntityPropNames.startDate,
-      EntityPropNames.endDate,
-      EntityPropNames.contactType
-    ];
-    const allValidators = {
+    return {
       contactType: [
         Validators.required
       ],
@@ -64,10 +63,9 @@ export class Entity implements IEntity, IModel {
         CustomValidators.dateRange(form, EntityPropNames.startDate, EntityPropNames.endDate)
       ],
       companyName: [
-        CustomValidators.requiredIf(form, EntityPropNames.contactType, 'C')
+        CustomValidators.requiredIf(form, EntityPropNames.contactType, 'B')
       ]
     };
-    return allValidators;
   };
 
   public getFieldProps = (): { [key: string]: FieldProps } => {
@@ -79,10 +77,18 @@ export class Entity implements IEntity, IModel {
     fieldProps[EntityPropNames.contactType] = new FieldProps({
       label: 'Contact Type',
       dropdownOptions: [
-        new DropdownOption({ value: null, label: '' }),
-        new DropdownOption({ value: 'I', label: 'Individual' }),
-        new DropdownOption({ value: 'C', label: 'Company' }),
-        new DropdownOption({ value: 'V', label: 'Venue' })
+        new DropdownOption({
+          value: null,
+          label: ''
+        }),
+        new DropdownOption({
+          value: 'P',
+          label: 'Personal'
+        }),
+        new DropdownOption({
+          value: 'B',
+          label: 'Business'
+        })
       ]
     });
 
