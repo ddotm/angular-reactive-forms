@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 
 @Component({
   selector: 'forms-top-nav-menu',
@@ -7,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopNavMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
