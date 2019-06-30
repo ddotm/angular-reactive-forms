@@ -62,6 +62,7 @@ export class EntityListComponent implements OnInit, OnDestroy {
 
   public addItem(): void {
     const dataItem: DataItem<Entity> = new DataItem<Entity>(new Entity());
+    dataItem.metadata.editMode = true;
     this.vm.push(dataItem);
   }
 
