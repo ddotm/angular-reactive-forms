@@ -30,7 +30,7 @@ export interface IEntity {
 }
 
 export class Entity implements IEntity, IModel {
-  public entityId: number = null;
+  public entityId: number = 0;
   public contactType: string = null;
   public firstName: string = null;
   public lastName: string = null;

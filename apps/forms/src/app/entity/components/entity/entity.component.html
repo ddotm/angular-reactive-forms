@@ -1,10 +1,19 @@
-<form [formGroup]="vm.metadata.form">
+<div class="row" *ngIf="!vm.metadata.editMode" (click)="makeEditable()">
+  <div class="col-2">{{vm.data[propNames.contactType]}}</div>
+  <div class="col-1">{{vm.data[propNames.firstName]}}</div>
+  <div class="col-2">{{vm.data[propNames.lastName]}}</div>
+  <div class="col-1">{{vm.data[propNames.startDate]}}</div>
+  <div class="col-1">{{vm.data[propNames.endDate]}}</div>
+  <div class="col-2">{{vm.data[propNames.companyName]}}</div>
+</div>
+
+<form [formGroup]="vm.metadata.form" *ngIf="vm.metadata.editMode">
   <div class="row">
 
     <div class="col-1">
       <a (click)="selectEntity()"
-              class="btn btn-success align-middle"
-              [ngClass]="selected ? 'btn-success' : 'btn-info'">
+         class="btn btn-success"
+         [ngClass]="selected ? 'btn-success' : 'btn-info'">
         {{vm.data[propNames.entityId] || 'New'}}
       </a>
     </div>

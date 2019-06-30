@@ -78,4 +78,8 @@ export class EntityComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.componentActive = false;
   }
+
+  makeEditable() {
+    this.vm.metadata.editMode = true;
+  }
 }

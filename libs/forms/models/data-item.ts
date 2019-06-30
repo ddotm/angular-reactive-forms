@@ -22,9 +22,4 @@ export class DataItem<T extends IModel> {
     this.metadata.validators = this.data.getValidators(this.metadata.form);
     formsService.setValidators(this.metadata.form, this.metadata.validators);
   }
-
-  public revalidate() {
-    const formsService: FormsService = AppInjector.get(FormsService);
-    formsService.revalidate(this.metadata.form);
-  }
 }
