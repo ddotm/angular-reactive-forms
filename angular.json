@@ -145,6 +145,40 @@
           }
         }
       }
+    },
+    "top-nav-menu": {
+      "projectType": "library",
+      "root": "libs/top-nav-menu",
+      "sourceRoot": "libs/top-nav-menu/src",
+      "prefix": "forms",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/top-nav-menu/tsconfig.lib.json",
+              "libs/top-nav-menu/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/top-nav-menu/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/top-nav-menu/jest.config.js",
+            "tsConfig": "libs/top-nav-menu/tsconfig.spec.json",
+            "setupFile": "libs/top-nav-menu/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "defaultProject": "forms",

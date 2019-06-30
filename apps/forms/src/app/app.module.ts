@@ -11,6 +11,7 @@ import {AppComponent} from './app.component';
 import {environment} from '../environments/environment';
 import {BrowserModule} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {TopNavMenuModule} from "@forms/top-nav-menu";
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    TopNavMenuModule,
     FormsProcessingModule,
     AppRoutingModule,
     EntityModule,
