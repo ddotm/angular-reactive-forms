@@ -1,10 +1,10 @@
-import { Entity } from './models/entity';
+import {Entity} from './models/entity';
 
-import { InMemoryDbService } from 'angular-in-memory-web-api';
+import {InMemoryDbService} from 'angular-in-memory-web-api';
 
 export class EntityData implements InMemoryDbService {
   createDb() {
-    return { entities };
+    return {entities};
   }
 }
 

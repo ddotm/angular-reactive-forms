@@ -1,9 +1,15 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {
+  Routes,
+  RouterModule
+} from '@angular/router';
 import {EntityListComponent} from './entity/components/entity-list/entity-list.component';
 
 const routes: Routes = [
-  {path: '', component: EntityListComponent}
+  {
+    path: '',
+    component: EntityListComponent
+  }
 ];
 
 @NgModule({

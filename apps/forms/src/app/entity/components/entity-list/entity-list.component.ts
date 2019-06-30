@@ -1,12 +1,27 @@
 import * as _ from 'lodash';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { select, Store } from '@ngrx/store';
-import { takeWhile } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
-import { EntityService } from '../../services/entity.service';
-import { Entity } from '../../models/entity';
-import { DataItem } from '../../../forms/models/data-item';
-import { ClearEntitiesSlice, LoadEntities, getEntities, IEntitySlice } from '../../state';
+import {
+  Component,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
+import {
+  select,
+  Store
+} from '@ngrx/store';
+import {takeWhile} from 'rxjs/operators';
+import {
+  Observable,
+  of
+} from 'rxjs';
+import {EntityService} from '../../services/entity.service';
+import {Entity} from '../../models/entity';
+import {DataItem} from '../../../forms/models/data-item';
+import {
+  ClearEntitiesSlice,
+  LoadEntities,
+  getEntities,
+  IEntitySlice
+} from '../../state';
 
 @Component({
   selector: 'app-entity-list',
@@ -28,14 +43,14 @@ export class EntityListComponent implements OnInit, OnDestroy {
     this.store.pipe(
       select(getEntities),
       takeWhile(() => this.componentActive))
-      .subscribe((entities: Array<Entity>) => {
-        this.vm = new Array<DataItem<Entity>>();
-        _.forEach(entities, (entity: Entity) => {
-          const dataItem = this.createDataItem(entity);
-          this.vm.push(dataItem);
+        .subscribe((entities: Array<Entity>) => {
+          this.vm = new Array<DataItem<Entity>>();
+          _.forEach(entities, (entity: Entity) => {
+            const dataItem = this.createDataItem(entity);
+            this.vm.push(dataItem);
+          });
+          this.vm$ = of(this.vm);
         });
-        this.vm$ = of(this.vm);
-      });
   }
 
   private createDataItem(entity: Entity): DataItem<Entity> {

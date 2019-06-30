@@ -1,9 +1,18 @@
-import { forEach } from 'lodash';
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { Entity, IEntity } from '../models/entity';
-import { catchError, tap } from 'rxjs/operators';
+import {forEach} from 'lodash';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {
+  Observable,
+  throwError
+} from 'rxjs';
+import {
+  Entity,
+  IEntity
+} from '../models/entity';
+import {
+  catchError,
+  tap
+} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,16 +25,16 @@ export class EntityService {
 
   public get(id: number): Observable<Array<Entity>> {
     return this.http.get<Array<Entity>>(this.entityUrl)
-      .pipe(
-        tap((data: Array<Entity>) => console.log(JSON.stringify(data))),
-        tap((data: Array<Entity>) => forEach(data, (item: Entity) => {
-            // fake api service returns dates as strings for some reason
-            item.endDate = new Date(item.endDate);
-            item.startDate = new Date(item.startDate);
-          })
-        ),
-        catchError(this.handleError)
-      );
+               .pipe(
+                 tap((data: Array<Entity>) => console.log(JSON.stringify(data))),
+                 tap((data: Array<Entity>) => forEach(data, (item: Entity) => {
+                     // fake api service returns dates as strings for some reason
+                     item.endDate = new Date(item.endDate);
+                     item.startDate = new Date(item.startDate);
+                   })
+                 ),
+                 catchError(this.handleError)
+               );
   }
 
   public save(data: Array<IEntity>): void {
