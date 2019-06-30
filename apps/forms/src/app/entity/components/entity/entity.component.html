@@ -1,4 +1,5 @@
 <div class="row" *ngIf="!vm.metadata.editMode" (click)="makeEditable()">
+  <div class="col-1">{{vm.data[propNames.entityId]}}</div>
   <div class="col-2">{{vm.data[propNames.contactType]}}</div>
   <div class="col-1">{{vm.data[propNames.firstName]}}</div>
   <div class="col-2">{{vm.data[propNames.lastName]}}</div>

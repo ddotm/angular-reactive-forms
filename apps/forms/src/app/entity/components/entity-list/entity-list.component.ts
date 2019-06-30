@@ -46,17 +46,11 @@ export class EntityListComponent implements OnInit, OnDestroy {
         .subscribe((entities: Array<Entity>) => {
           this.vm = new Array<DataItem<Entity>>();
           _.forEach(entities, (entity: Entity) => {
-            const dataItem = this.createDataItem(entity);
+            const dataItem = new DataItem<Entity>(new Entity(entity));
             this.vm.push(dataItem);
           });
           this.vm$ = of(this.vm);
         });
-  }
-
-  private createDataItem(entity: Entity): DataItem<Entity> {
-    // Assign specific type to the data property of the data item container
-    const dataItem = new DataItem<Entity>(new Entity(entity));
-    return dataItem;
   }
 
   public save() {
@@ -67,7 +61,7 @@ export class EntityListComponent implements OnInit, OnDestroy {
   }
 
   public addItem(): void {
-    const dataItem: DataItem<Entity> = this.createDataItem(new Entity());
+    const dataItem: DataItem<Entity> = new DataItem<Entity>(new Entity());
     this.vm.push(dataItem);
   }
 
