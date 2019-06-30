@@ -12,6 +12,8 @@ import {EntitySliceName} from './state';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {EntityData} from './entity.data';
+import {BrowserModule} from "@angular/platform-browser";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import {EntityData} from './entity.data';
     EntityComponent
   ],
   imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
     FormsProcessingModule,
     StoreModule.forFeature(EntitySliceName, entityReducer),
     EffectsModule.forFeature(

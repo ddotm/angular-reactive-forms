@@ -9,14 +9,18 @@ import {FormsProcessingModule} from '@forms/forms/forms-processing.module';
 import {EntityModule} from './entity/entity.module';
 import {AppComponent} from './app.component';
 import {environment} from '../environments/environment';
+import {BrowserModule} from "@angular/platform-browser";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
     FormsProcessingModule,
+    AppRoutingModule,
     EntityModule,
     NxModule.forRoot(),
     StoreModule.forRoot(new AppState()),
@@ -27,6 +31,7 @@ import {environment} from '../environments/environment';
       logOnly: environment.production
     })
   ],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent]
 })
