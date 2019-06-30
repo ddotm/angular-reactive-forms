@@ -1,14 +1,18 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit
+} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {FieldProps} from '../../../models/field-props';
 import {FormsService} from '../../../services/forms.service';
 
 @Component({
-  selector: 'app-date',
-  templateUrl: './date.component.html',
-  styleUrls: ['./date.component.scss']
+  selector: 'app-dropdown',
+  templateUrl: './dropdown.component.html',
+  styleUrls: ['./dropdown.component.scss']
 })
-export class DateComponent implements OnInit {
+export class DropdownComponent implements OnInit {
 
   @Input() public formGroup: FormGroup = null;
   @Input() public controlName: string = null;

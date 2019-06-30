@@ -5,7 +5,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {AppRoutingModule} from './app-routing.module';
 import {AppState} from './app.state';
-import {SharedModule} from './forms/shared.module';
+import {FormsProcessingModule} from '@forms/forms/forms-processing.module';
 import {EntityModule} from './entity/entity.module';
 import {AppComponent} from './app.component';
 import {environment} from '../environments/environment';
@@ -16,7 +16,7 @@ import {environment} from '../environments/environment';
   ],
   imports: [
     AppRoutingModule,
-    SharedModule,
+    FormsProcessingModule,
     EntityModule,
     NxModule.forRoot(),
     StoreModule.forRoot(new AppState()),

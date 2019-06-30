@@ -1,8 +1,8 @@
 import * as _ from 'lodash';
-import { ModelMetadata } from './model-metadata';
-import { FormsService } from '../services/forms.service';
-import { IModel } from './imodel';
-import { AppInjector } from '../shared.module';
+import {ModelMetadata} from './model-metadata';
+import {FormsService} from '../services/forms.service';
+import {IModel} from './imodel';
+import {AppInjector} from '../forms-processing.module';
 
 export class DataItem<T extends IModel> {
   public data: T = null;

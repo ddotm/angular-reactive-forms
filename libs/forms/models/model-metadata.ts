@@ -1,5 +1,8 @@
 import * as _ from 'lodash';
-import {FormGroup, ValidatorFn} from '@angular/forms';
+import {
+  FormGroup,
+  ValidatorFn
+} from '@angular/forms';
 import {FieldProps} from './field-props';
 
 export class ModelMetadata {
@@ -14,4 +17,3 @@ export class ModelMetadata {
     return !_.isEmpty(this.form.controls[controlName]);
   }
 }
-

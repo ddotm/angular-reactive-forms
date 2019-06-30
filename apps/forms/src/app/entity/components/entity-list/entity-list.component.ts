@@ -15,7 +15,7 @@ import {
 } from 'rxjs';
 import {EntityService} from '../../services/entity.service';
 import {Entity} from '../../models/entity';
-import {DataItem} from '../../../forms/models/data-item';
+import {DataItem} from '@forms/forms/models/data-item';
 import {
   ClearEntitiesSlice,
   LoadEntities,

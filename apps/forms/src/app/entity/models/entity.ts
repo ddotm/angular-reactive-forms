@@ -1,13 +1,13 @@
 import * as _ from 'lodash';
-import {FieldProps} from '../../forms/models/field-props';
-import {DropdownOption} from '../../forms/models/dropdown-option';
+import {FieldProps} from '@forms/forms/models/field-props';
+import {DropdownOption} from '@forms/forms/models/dropdown-option';
 import {
   FormGroup,
   ValidatorFn,
   Validators
 } from '@angular/forms';
-import {IModel} from '../../forms/models/imodel';
-import {CustomValidators} from '../../forms/services/custom-validators';
+import {IModel} from '@forms/forms/models/imodel';
+import {CustomValidators} from '@forms/forms/services/custom-validators';
 
 export enum EntityPropNames {
   entityId = 'entityId',

@@ -1,5 +1,9 @@
 import * as _ from 'lodash';
-import {AbstractControl, FormGroup, ValidatorFn} from '@angular/forms';
+import {
+  AbstractControl,
+  FormGroup,
+  ValidatorFn
+} from '@angular/forms';
 
 export class CustomValidators {
 

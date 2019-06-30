@@ -3,16 +3,16 @@ import {
   Input,
   OnInit
 } from '@angular/core';
-import {FieldProps} from '../../../models/field-props';
 import {FormGroup} from '@angular/forms';
+import {FieldProps} from '../../../models/field-props';
 import {FormsService} from '../../../services/forms.service';
 
 @Component({
-  selector: 'app-dropdown',
-  templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.scss']
+  selector: 'app-input',
+  templateUrl: './input.component.html',
+  styleUrls: ['./input.component.scss']
 })
-export class DropdownComponent implements OnInit {
+export class InputComponent implements OnInit {
 
   @Input() public formGroup: FormGroup = null;
   @Input() public controlName: string = null;

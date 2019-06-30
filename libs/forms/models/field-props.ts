@@ -5,6 +5,7 @@ interface ICommonFieldProps {
   class?: string;
   revalidate?: boolean;
   visible?: boolean;
+
   mapper?(): any | null;
 }
 

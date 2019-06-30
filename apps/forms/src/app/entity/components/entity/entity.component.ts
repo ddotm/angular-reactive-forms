@@ -1,10 +1,25 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { select, Store } from '@ngrx/store';
-import { takeWhile } from 'rxjs/operators';
-import { Entity, EntityPropNames } from '../../models/entity';
-import { DataItem } from '../../../forms/models/data-item';
-import { FormsService } from '../../../forms/services/forms.service';
-import { SelectEntityAction, getSelectedEntityId, IEntitySlice } from '../../state';
+import {
+  Component,
+  Input,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
+import {
+  select,
+  Store
+} from '@ngrx/store';
+import {takeWhile} from 'rxjs/operators';
+import {
+  Entity,
+  EntityPropNames
+} from '../../models/entity';
+import {DataItem} from '@forms/forms/models/data-item';
+import {FormsService} from '@forms/forms/services/forms.service';
+import {
+  SelectEntityAction,
+  getSelectedEntityId,
+  IEntitySlice
+} from '../../state';
 
 @Component({
   selector: 'app-entity',
@@ -26,19 +41,19 @@ export class EntityComponent implements OnInit, OnDestroy {
     this.store.pipe(
       select(getSelectedEntityId),
       takeWhile(() => this.componentActive))
-      .subscribe((selectedEntityId: number) => {
-        this.selected = selectedEntityId === this.vm.data.entityId;
-      });
+        .subscribe((selectedEntityId: number) => {
+          this.selected = selectedEntityId === this.vm.data.entityId;
+        });
   }
 
   private onChanges() {
     this.vm.metadata.form.valueChanges
-      .pipe(
-        takeWhile(() => this.componentActive)
-      )
-      .subscribe((val) => {
-        this.revalidate();
-      });
+        .pipe(
+          takeWhile(() => this.componentActive)
+        )
+        .subscribe((val) => {
+          this.revalidate();
+        });
   }
 
   public revalidate() {

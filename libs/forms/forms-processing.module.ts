@@ -57,7 +57,7 @@ const PrimeNgModules = [
     FormSummaryUtilityComponent
   ]
 })
-export class SharedModule {
+export class FormsProcessingModule {
   constructor(private injector: Injector) {
     AppInjector = this.injector;
   }

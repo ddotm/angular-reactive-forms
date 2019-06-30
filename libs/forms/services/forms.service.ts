@@ -1,6 +1,13 @@
 import * as _ from 'lodash';
 import {Injectable} from '@angular/core';
-import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn} from '@angular/forms';
+import {
+  AbstractControl,
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ValidatorFn
+} from '@angular/forms';
 import {IModel} from '../models/imodel';
 import {DataItem} from '../models/data-item';
 

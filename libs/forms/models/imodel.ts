@@ -1,4 +1,7 @@
-import {FormGroup, ValidatorFn} from '@angular/forms';
+import {
+  FormGroup,
+  ValidatorFn
+} from '@angular/forms';
 import {FieldProps} from './field-props';
 
 export interface IModel {
