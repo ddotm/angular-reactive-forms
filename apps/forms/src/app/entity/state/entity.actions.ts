@@ -33,28 +33,28 @@ export class SetEntitiesAction implements Action {
 }
 
 export class LoadEntities implements Action {
-  readonly type = EntityActionTypes.LoadEntities;
+  readonly type: string = EntityActionTypes.LoadEntities;
 
   constructor(public payload: number) {
   }
 }
 
 export class LoadEntitiesSuccess implements Action {
-  readonly type = EntityActionTypes.LoadEntitiesSuccess;
+  readonly type: string = EntityActionTypes.LoadEntitiesSuccess;
 
   constructor(public payload: Array<Entity>) {
   }
 }
 
 export class LoadEntitiesFail implements Action {
-  readonly type = EntityActionTypes.LoadEntitiesFail;
+  readonly type: string = EntityActionTypes.LoadEntitiesFail;
 
   constructor(public payload: string) {
   }
 }
 
 export class ClearEntitiesSlice implements Action {
-  readonly type = EntityActionTypes.ClearEntities;
+  readonly type: string = EntityActionTypes.ClearEntities;
   public payload = null;
 }
 
