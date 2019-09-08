@@ -25,7 +25,14 @@ import {TopNavMenuModule} from '@forms/top-nav-menu/src';
     AppRoutingModule,
     EntityModule,
     NxModule.forRoot(),
-    StoreModule.forRoot(new AppState()),
+    StoreModule.forRoot(new AppState(), {
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+        strictStateSerializability: true,
+        strictActionSerializability: true
+      }
+    }),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       name: 'Reactive Forms App DevTools',
