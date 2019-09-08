@@ -8,7 +8,7 @@ export const getSelectedEntityId =
   createSelector(
     getEntityState,
     (entityState) => {
-      return !isNull(entityState.selectedEntity) ? entityState.selectedEntity.entityId : null;
+      return !isNull(entityState.selectedEntity) ? entityState.selectedEntity.id : null;
     }
   );
 

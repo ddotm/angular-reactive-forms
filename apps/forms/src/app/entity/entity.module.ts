@@ -9,11 +9,14 @@ import {EntityEffects} from './state';
 import {EntitySliceName} from './state';
 
 // Imports for loading & configuring the in-memory web api
-import {HttpClientModule} from '@angular/common/http';
-import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
-import {EntityData} from './entity.data';
-import {BrowserModule} from "@angular/platform-browser";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {
+  HttpClientJsonpModule,
+  HttpClientModule
+} from '@angular/common/http';
+import {InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import {EntityDataService} from './entity-data.service';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
       [EntityEffects]
     ),
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(EntityData)
+    HttpClientJsonpModule,
+    InMemoryWebApiModule.forRoot(EntityDataService, {apiBase: 'api/'})
   ],
   providers: []
 })

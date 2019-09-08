@@ -10,7 +10,7 @@ import {IModel} from '@forms/forms/models/imodel';
 import {CustomValidators} from '@forms/forms/services/custom-validators';
 
 export enum EntityPropNames {
-  entityId = 'entityId',
+  id = 'id',
   contactType = 'contactType',
   firstName = 'firstName',
   lastName = 'lastName',
@@ -20,7 +20,7 @@ export enum EntityPropNames {
 }
 
 export interface IEntity {
-  entityId: number;
+  id: number;
   contactType: string;
   firstName: string;
   lastName: string;
@@ -30,7 +30,7 @@ export interface IEntity {
 }
 
 export class Entity implements IEntity, IModel {
-  public entityId: number = 0;
+  public id: number = 0;
   public contactType: string = null;
   public firstName: string = null;
   public lastName: string = null;
@@ -70,7 +70,7 @@ export class Entity implements IEntity, IModel {
 
   public getFieldProps = (): { [key: string]: FieldProps } => {
     const fieldProps: { [key: string]: FieldProps } = {};
-    fieldProps[EntityPropNames.entityId] = new FieldProps({
+    fieldProps[EntityPropNames.id] = new FieldProps({
       label: 'ID'
     });
 

@@ -1,5 +1,11 @@
-<div class="row" *ngIf="!vm.metadata.editMode" (click)="makeEditable()">
-  <div class="col-1">{{vm.data[propNames.entityId]}}</div>
+<div class="row"
+     *ngIf="!vm.metadata.editMode"
+     (click)="setEditable(true)">
+  <div class="col-1">
+    <span>
+      {{vm.data[propNames.id]}}
+    </span>
+  </div>
   <div class="col-2">{{vm.data[propNames.contactType]}}</div>
   <div class="col-1">{{vm.data[propNames.firstName]}}</div>
   <div class="col-2">{{vm.data[propNames.lastName]}}</div>
@@ -8,14 +14,15 @@
   <div class="col-2">{{vm.data[propNames.companyName]}}</div>
 </div>
 
-<form [formGroup]="vm.metadata.form" *ngIf="vm.metadata.editMode">
+<form [formGroup]="vm.metadata.form"
+      *ngIf="vm.metadata.editMode">
   <div class="row">
 
     <div class="col-1">
       <a (click)="selectEntity()"
          class="btn btn-success"
          [ngClass]="selected ? 'btn-success' : 'btn-info'">
-        {{vm.data[propNames.entityId] || 'New'}}
+        {{vm.data[propNames.id] || 'New'}}
       </a>
     </div>
 
@@ -49,6 +56,9 @@
                [controlName]="propNames.companyName"
                [vm]="vm.metadata.fieldProps[propNames.companyName]"></app-input>
   </div>
+  <button class="btn btn-primary"
+          (click)="save()">Save
+  </button>
 </form>
 <app-form-summary-utility *ngIf="vm.metadata.displayDiagnostics"
                           [form]="vm.metadata.form"></app-form-summary-utility>

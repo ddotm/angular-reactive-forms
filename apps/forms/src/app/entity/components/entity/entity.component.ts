@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import {
   Component,
   Input,
@@ -20,20 +21,23 @@ import {
   getSelectedEntityId,
   IEntitySlice
 } from '../../state';
+import {EntityService} from '../../services/entity.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-entity',
   templateUrl: './entity.component.html'
 })
 export class EntityComponent implements OnInit, OnDestroy {
-  componentActive = true;
-
   @Input() public vm: DataItem<Entity> = null;
+
   public propNames = EntityPropNames;
   public selected: boolean = false;
+  componentActive = true;
 
   constructor(private formsService: FormsService,
-              private store: Store<IEntitySlice>) {
+              private store: Store<IEntitySlice>,
+              private entityService: EntityService) {
   }
 
   ngOnInit() {
@@ -42,7 +46,7 @@ export class EntityComponent implements OnInit, OnDestroy {
       select(getSelectedEntityId),
       takeWhile(() => this.componentActive))
         .subscribe((selectedEntityId: number) => {
-          this.selected = selectedEntityId === this.vm.data.entityId;
+          this.selected = selectedEntityId === this.vm.data.id;
         });
   }
 
@@ -75,11 +79,28 @@ export class EntityComponent implements OnInit, OnDestroy {
     }
   }
 
+  public save() {
+    const entity: Entity = this.vm.metadata.form.value;
+    let obs: Observable<any>;
+    if (entity.id !== 0) {
+      obs = this.entityService.updateEntity(entity);
+    } else {
+      obs = this.entityService.addEntity(entity);
+    }
+
+    obs.subscribe({
+      next: (data: Entity) => {
+        _.merge(this.vm.data, data);
+        this.setEditable(false);
+      }
+    });
+  }
+
   ngOnDestroy(): void {
     this.componentActive = false;
   }
 
-  makeEditable() {
-    this.vm.metadata.editMode = true;
+  setEditable(editable: boolean) {
+    this.vm.metadata.editMode = editable;
   }
 }
